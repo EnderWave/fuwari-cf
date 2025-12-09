@@ -17,7 +17,7 @@ lang: ''
 由于每次我们需要计算打折后价格为$i$的贡献，我们还需要维护一个**前缀和**来计算原价位于$[i*x,(i+1)*x-1]$的数的个数。
 **注意不要乘爆了**
 核心代码
-```
+```cpp
 ll ans=-1e18;
 for (int i=1;i<=V+1;i++)pr[i]=0;
 for (int i=1;i<=V+1;i++)pr[i]=pr[i-1]+ct[i];
@@ -25,7 +25,7 @@ for (int i=2;i<=V+1;i++){
     ans=std::max(ans,so(i));
 }
 ```
-```
+```cpp
 ll so(int x){
     ll res=0,mius=0;
     for (int i=1;i*x-(x-1)<=V;i++){
