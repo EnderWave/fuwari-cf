@@ -1,3 +1,3 @@
 # FriendLinks
 
-欢迎各位
+**需要友链联系我uwu**

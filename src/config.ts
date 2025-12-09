@@ -43,7 +43,7 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		LinkPreset.Links, //youlian
+		LinkPreset.Links,
 		LinkPreset.About,
 		{
 			name: "GitHub",
