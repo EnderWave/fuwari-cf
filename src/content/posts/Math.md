@@ -612,8 +612,8 @@ f(x_{0}+p^{e-1}t)
   
 注意到我们推理中只有最后一步用到$f(x_{0})\equiv 0(\bmod p^{e-1})$，那么我们可以对着最后的式子构造解  
 ##### 推论$1$  
-$1.$$f(s)\equiv 0(\bmod p),f'(s)\not\equiv0(\bmod p)$，则存在$x_{s}\in Z_{p^{e}},x_{s}\equiv s(\bmod p),st.f(x_{s})\equiv 0(\bmod p^{e})$  
-$2.$$f(x)\equiv 0(\bmod p),f'(x)\equiv 0(\bmod p)$无公共解，则原方程的解数与$f(x)\equiv 0(\bmod p)$相同  
+$1.f(s)\equiv 0(\bmod p),f'(s)\not\equiv0(\bmod p)$，则存在$x_{s}\in Z_{p^{e}},x_{s}\equiv s(\bmod p),st.f(x_{s})\equiv 0(\bmod p^{e})$  
+$2.f(x)\equiv 0(\bmod p),f'(x)\equiv 0(\bmod p)$无公共解，则原方程的解数与$f(x)\equiv 0(\bmod p)$相同  
 $proof?$  
 
 #### 素数模同余方程  
@@ -666,7 +666,7 @@ $x^{n}+\sum_{i=0}^{n-1}a_{i}x^{i}\equiv 0(\bmod p),n<p$
 只需考虑$x^{n}+\sum_{i=0}^{n-2}a_{i}x^{i}\equiv 0(\bmod p),n<p$  
 $n=1$线性同余方程  
 $n=2$二次剩余  
-可化为$x^{n}\equiv a(\bmod p)$$k$次剩余  
+可化为$x^{n}\equiv a(\bmod p)k$次剩余  
 ### 二次剩余  
 ### 定义  
 $gcd(a,p)=1$，若存在整数$x$使得$x^{2}\equiv a(\bmod p)$，则称$a$为模$p$的二次剩余，否则称$a$为模$p$的二次非剩余  
@@ -700,7 +700,7 @@ $Proof$
 \end{align}$$ %%
 $1.$对任意整数$a$，$a^{\frac{p-1}{2}}\equiv (\frac{a}{p})(\bmod p)$  
 则$(\frac{1}{p})=1$$(\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$  
-$2.$$a_{1}\equiv a_{2}(\bmod p)=>(\frac{a_{1}}{p})=(\frac{a_{2}}{p})$  
+$2.a_{1}\equiv a_{2}(\bmod p)=>(\frac{a_{1}}{p})=(\frac{a_{2}}{p})$  
 $3.$（完全积性）对任意整数$a_{1},a_{2},(\frac{a_{1}a_{2}}{p})=(\frac{a_{1}}{p})(\frac{a_{2}}{p})$  
 则对整数$a,b,p\nmid b,(\frac{ab^{2}}{p})=(\frac{a}{p})$  
 $4.(\frac{2}{p})=(-1)^{\frac{p^{2}-1}{8}}$  
@@ -723,7 +723,7 @@ $2.$对于$a,n\in Z,m\in N_{+}$且$gcd(a,m)=1$，同余式$a^{n}\equiv 1(\bmod m
 $3.$对于$a,k\in Z,m\in N_{+}$且$gcd(a,m)=1$，有$\delta_{m}(a^{k})=\frac{\delta_{m}(a)}{gcd(\delta_{m}(a),k)}$  
 $4.$对于$a,b\in Z,m\in N_{+}$且$gcd(a,m)=1,gcd(b,m)=1$,有
 $\frac{lcm(\delta_{m}(a),\delta_{m}(b))}{gcd(\delta_{m}(a),\delta_{m}(b))}\mid \delta_{m}(ab)\mid lcm(\delta_{m}(a),\delta_{m}(b))$  
-$gcd(\delta_{m}(a),\delta_{m}(b))=1<=>$$\delta_{m}(ab)=\delta_{m}(a)\delta_{m}(b)$
+$gcd(\delta_{m}(a),\delta_{m}(b))=1<=>\delta_{m}(ab)=\delta_{m}(a)\delta_{m}(b)$
 $5.$对于$a,b\in Z,m\in N_{+}$且$gcd(a,m)=1,gcd(b,m)=1$,$\exists c\in Z,gcd(c,m)=1$使得$\delta_{m}(c)=lcm(\delta_{m}(a),\delta_{m}(b))$  
 #### 原根  
 对于$m\in N_{+},$如果存在$g\in Z$且$gcd(g,m)=1$使得$\delta_{m}(g)=\varphi(m)$，则称$g$为模$m$的原根  
@@ -784,7 +784,7 @@ $x=A\lceil \sqrt m\rceil -B$,其中$0\leq A,B\leq\sqrt m$，则$a^{A\lceil \sqrt
 $d_{1}=gcd(a,m),d_{1}\nmid b$无解，否则得到$\frac{a}{d_{1}}a^{x-1}\equiv \frac{b}{d_{1}}(\bmod \frac{m}{d_1})$  
 $d_{2}=gcd(a,\frac{m}{d_{1}}),d_{2}\nmid \frac{b}{d_{1}}$无解，否则得到$\frac{a^{2}}{d_{1}d_{2}}a^{x-2}\equiv \frac{b}{d_{1}d_{2}}(\bmod \frac{m}{d_{1}d_{2}})$  
 $...$  
-$D=\prod_{i=1}^{k}d_{i},$$\frac{a^{k}}{D}a^{x-k}\equiv \frac{b}{D}(\bmod \frac{m}{D})$  
+$D=\prod_{i=1}^{k}d_{i},\frac{a^{k}}{D}a^{x-k}\equiv \frac{b}{D}(\bmod \frac{m}{D})$  
 转化成普通的$BSGS$问题  
 ### 高次剩余&单位根  
 #### 高次剩余  
