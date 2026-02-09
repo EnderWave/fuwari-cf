@@ -275,12 +275,7 @@ F_{k}(n)
 \end{align}
 $$
 
-%% $$\begin{align}
-F_{k}(n)
-&=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)\\
-&=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c}\leq n}f(p_{i}^{c})([c>1]+F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
-&=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c+1}\leq n}(f(p_{i}^{c+1})+f(p_{i}^{c})F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
-\end{align}$$ %%
+
 考虑计算$F_{k}(n)$  
 $1.$直接递推  
 $2.$从大到小枚举$p$，当$p^{2}<n$时转移增加值不为零，可*后缀和优化*  
@@ -295,6 +290,16 @@ $f(a,b,c,n)=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor$
 $g(a,b,c,n)=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor ^{2}$  
 $h(a,b,c,n)=\sum_{i=0}^{n} i\lfloor \frac{ai+b}{c} \rfloor$  
 计算$f$
+$$
+\begin{align}
+f(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor \\
+&= \sum_{i=0}^{n} \left\lfloor \frac{(\lfloor a/c \rfloor \cdot c + (a \bmod c)) i + \lfloor b/c \rfloor \cdot c + (b \bmod c)}{c} \right\rfloor \\
+&= \sum_{i=0}^{n} \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor + \lfloor a/c \rfloor \, i + \lfloor b/c \rfloor \\
+&= \frac{n(n+1)}{2} \lfloor a/c \rfloor + (n+1)\lfloor b/c \rfloor + f(a \bmod c,\, b \bmod c,\, c,\, n)
+\end{align}
+$$
+
 %% $$ \begin{align} 
 f(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor\\
@@ -303,6 +308,22 @@ f(a,b,c,n)
 &=\frac{n(n+1)}{2}\lfloor \frac{a}{c} \rfloor+(n+1)\lfloor \frac{b}{c} \rfloor +f(a \bmod c,b\bmod c,c,n)\\
 \end{align}$$ %%
 如果$a<c,b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$,$\lfloor \frac{ai+b}{c} \rfloor=\lceil \frac{ai+b+1}{c} \rceil-1$  
+$$
+\begin{align}
+f(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} [\, j < \left\lfloor \frac{ai+b}{c} \right\rfloor \,] \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} [\, j < \left\lceil \frac{ai+b+1}{c} \right\rceil - 1 \,] \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} [\, j+1 < \left\lceil \frac{ai+b+1}{c} \right\rceil \,] \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} [\, j+1 < \frac{ai+b+1}{c} \,] \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} [\, jc + c < ai + b + 1 \,] \\
+&= \sum_{j=0}^{m-1} \sum_{i=0}^{n} [\, i > \frac{cj + c - b - 1}{a} \,] \\
+&= \sum_{j=0}^{m-1} \sum_{i=0}^{n} [\, i > \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \,] \\
+&= \sum_{j=0}^{m-1} \left( n - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \right) \\
+&= mn - f(c,\, c-b-1,\, a,\, m-1)
+\end{align}
+$$
+
 %% $$ \begin{align} 
 f(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor\\
@@ -317,6 +338,27 @@ f(a,b,c,n)
 &=mn-f(c,c-b-1,a,m-1)
 \end{align}$$ %%
 计算$g,h$  
+$$
+\begin{align}
+g(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor^{2} \\
+&= \sum_{i=0}^{n} \left\lfloor \frac{(\lfloor a/c \rfloor \cdot c + (a \bmod c)) i + \lfloor b/c \rfloor \cdot c + (b \bmod c)}{c} \right\rfloor^{2} \\
+&= \sum_{i=0}^{n} \left( \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor + \lfloor a/c \rfloor \, i + \lfloor b/c \rfloor \right)^{2} \\
+&= \sum_{i=0}^{n} \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor^{2}
+  + \sum_{i=0}^{n} (\lfloor a/c \rfloor \, i)^{2}
+  + \sum_{i=0}^{n} \lfloor b/c \rfloor^{2} \\
+&\quad + 2 \lfloor a/c \rfloor \sum_{i=0}^{n} i \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor
+  + 2 \lfloor b/c \rfloor \sum_{i=0}^{n} \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor \\
+&\quad + 2 \lfloor a/c \rfloor \lfloor b/c \rfloor \sum_{i=0}^{n} i \\
+&= g(a \bmod c,\, b \bmod c,\, c,\, n)
+  + \frac{n(n+1)(2n+1)}{6} \lfloor a/c \rfloor^{2}
+  + (n+1)\lfloor b/c \rfloor^{2} \\
+&\quad + 2 \lfloor a/c \rfloor \, h(a \bmod c,\, b \bmod c,\, c,\, n)
+  + 2 \lfloor b/c \rfloor \, f(a \bmod c,\, b \bmod c,\, c,\, n)
+  + n(n+1)\lfloor a/c \rfloor \lfloor b/c \rfloor
+\end{align}
+$$
+
 %% $$ \begin{align} 
 g(a,b,c,n)
 &=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor ^{2}\\
@@ -327,6 +369,17 @@ g(a,b,c,n)
 \end{align}$$ %%  
 
 如果$a<c,b<c,m=\lfloor \frac{an+b}{c} \rfloor$  
+$$
+\begin{align}
+g(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor^{2} \\
+&= \sum_{i=0}^{n} \sum_{j=0}^{m-1} (2j+1)\,[\, j < \left\lfloor \frac{ai+b}{c} \right\rfloor \,] \\
+&= \sum_{j=0}^{m-1} (2j+1) \sum_{i=0}^{n} \left[\, i > \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \,\right] \\
+&= \sum_{j=0}^{m-1} (2j+1)\left( n - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \right) \\
+&= m^{2} n - 2\, g(c,\, c-b-1,\, a,\, m-1) - f(c,\, c-b-1,\, a,\, m-1)
+\end{align}
+$$
+
 %% $$ \begin{align} 
 g(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor^{2}\\
@@ -335,6 +388,24 @@ g(a,b,c,n)
 &=\sum_{j=0}^{m-1}(2j+1)(n-\lfloor\frac{cj+c-b-1}{a}\rfloor) \\
 &=m^{2}n-2\times g(c,c-b-1,a,m-1)-f(c,c-b-1,a,m-1)\\
 \end{align}$$ %%
+$$
+\begin{align}
+h(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor\, i \\
+&= \sum_{i=0}^{n} \left\lfloor 
+    \frac{(\lfloor a/c \rfloor \cdot c + (a \bmod c))\, i 
+          + \lfloor b/c \rfloor \cdot c + (b \bmod c)}
+         {c}
+    \right\rfloor i \\
+&= \sum_{i=0}^{n} 
+    \left\lfloor \frac{(a \bmod c)i + (b \bmod c)}{c} \right\rfloor i
+    + \lfloor a/c \rfloor\, i^{2}
+    + \lfloor b/c \rfloor\, i \\
+&= h(a \bmod c,\, b \bmod c,\, c,\, n)
+   + \frac{n(n+1)(2n+1)}{6}\lfloor a/c \rfloor
+   + \frac{n(n+1)}{2}\lfloor b/c \rfloor
+\end{align}
+$$
 
 %% $$ \begin{align} 
 h(a,b,c,n)
@@ -344,6 +415,27 @@ h(a,b,c,n)
 &=h(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor+\frac{n(n+1)}{2}\lfloor\frac{b}{c} \rfloor\\
 \end{align}$$ %%
 如果$a<c$,$b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$  
+$$
+\begin{align}
+h(a,b,c,n)
+&= \sum_{i=0}^{n} \left\lfloor \frac{ai+b}{c} \right\rfloor\, i \\
+&= \sum_{i=0}^{n} i \sum_{j=0}^{m-1} \left[\, j < \left\lfloor \frac{ai+b}{c} \right\rfloor \,\right] \\
+&= \sum_{j=0}^{m-1} \sum_{i=0}^{n} i \left[\, i > \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \,\right] \\
+&= \sum_{j=0}^{m-1} \sum_{i=\left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor + 1}^{n} i \\
+&= \sum_{j=0}^{m-1} 
+   \frac{\left(n + \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor + 1\right)
+         \left(n - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor\right)}{2} \\
+&= \frac{1}{2} \sum_{j=0}^{m-1} 
+   \left( (n+1)n 
+        - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor
+        - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor^{2}
+   \right) \\
+&= \frac{1}{2}(n+1)nm
+   - \frac{1}{2} f(c,\, c-b-1,\, a,\, m-1)
+   - \frac{1}{2} g(c,\, c-b-1,\, a,\, m-1)
+\end{align}
+$$
+
 %% $$ \begin{align} 
 h(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor i\\
@@ -388,6 +480,17 @@ $gcd(a,m)=1$,则$a^{\varphi(m)} \equiv 1(\bmod m)$
 #### 费马小定理  
 $a^{p-1}\equiv 1(\bmod p)$  
 #### 扩展欧拉定理  
+$$
+\begin{align}
+a^{b} \equiv
+\begin{cases}
+a^{\, b \bmod \varphi(m)}, & \gcd(a,m)=1, \\[6pt]
+a^{\, b}, & \gcd(a,m)\neq 1,\ b < \varphi(m), \\[6pt]
+a^{\, (b \bmod \varphi(m)) + \varphi(m)}, & \gcd(a,m)\neq 1,\ b \ge \varphi(m).
+\end{cases}
+\end{align}
+$$
+
 %% $$\begin{align}
 a^{b}\equiv
 \begin{cases}
@@ -412,6 +515,15 @@ $i^{-1}\equiv -\lfloor \frac{p}{i}\rfloor(p\bmod i)^{-1} \mod p$
 ### 中国剩余定理$(CRT)$  
 #### 基本形式  
 $gcd(n_{1},n_{2},...,n_{k})=1$  
+$$
+\begin{cases}
+x \equiv a_{1} \pmod{n_{1}}, \\
+x \equiv a_{2} \pmod{n_{2}}, \\
+\vdots \\
+x \equiv a_{k} \pmod{n_{k}}.
+\end{cases}
+$$
+
 %% $$\begin{cases}
 x\equiv a_{1}(\bmod n_{1})\\
 x\equiv a_{2}(\bmod n_{2})\\
@@ -436,6 +548,15 @@ int crt(int k){
 ```
 #### $Garner$  
 $a<\prod_{i=1}^{k}p_{i}$且  
+$$
+\begin{cases}
+a \equiv a_{1} \pmod{p_{1}}, \\
+a \equiv a_{2} \pmod{p_{2}}, \\
+\vdots \\
+a \equiv a_{k} \pmod{p_{k}}.
+\end{cases}
+$$
+
 %% $$\begin{cases}
 a\equiv a_{1}(\bmod p_{1})\\
 a\equiv a_{2}(\bmod p_{2})\\
@@ -488,7 +609,22 @@ $2.$若$p|x+y$,则对奇数$n$有：$\nu_{p}(x^{n}+y^{n})=\nu_{p}(x+y)+\nu_{p}(n
 $Proof$  
 我们只需要证明$p\mid n$的情况  
 $n=p$时,我们只要证$p^{2}\nmid \sum_{i=0}^{n-1}x^{i}y^{n-1-i}$  
-设$y=x+kp$,（下面有点啰嗦）  
+设$y=x+kp$,（下面有点啰嗦）
+$$
+\begin{align}
+\sum_{i=0}^{p-1} x^{p-1-i} y^{i}
+&= \sum_{i=0}^{p-1} x^{p-1-i} (x + kp)^{i} \\
+&= \sum_{i=0}^{p-1} x^{p-1-i} \sum_{j=0}^{i} \binom{i}{j} x^{i-j} (kp)^{j} \\
+&= \sum_{i=0}^{p-1} x^{p-1} \sum_{j=0}^{i} \binom{i}{j} \left(\frac{kp}{x}\right)^{j} \\
+&= x^{p-1} \sum_{j=0}^{p-1} \sum_{i=j}^{p-1} \binom{i}{j} \left(\frac{kp}{x}\right)^{j} \\
+&= x^{p-1} \sum_{j=0}^{p-1} \left(\frac{kp}{x}\right)^{j} \sum_{i=j}^{p-1} \binom{i}{j} \\
+&\equiv x^{p-1} \left( p + \frac{kp}{x} \sum_{i=1}^{p-1} \binom{i}{1} \right) \\
+&\equiv x^{p-1} \left( p + \frac{kp}{x} \cdot \frac{(p-1)p}{2} \right) \\
+&\equiv x^{p-1} p \\
+&\not\equiv 0 \pmod{p^{2}}
+\end{align}
+$$
+
 %% $$\begin{align}
 \sum_{i=0}^{p-1}x^{p-1-i}y^{i}
 &=\sum_{i=0}^{p-1}x^{p-1-i}(x+kp)^{i}\\
@@ -512,6 +648,15 @@ $\nu_{p}(x^{n}-y^{n})=\nu_{p}(x-y)+\nu_{p}(n)$
 与上面相似，我们只要证明$p|n$的情况  
 $n=p$时,我们只要证$p^{2}\nmid \sum_{i=0}^{n-1}x^{i}(-y)^{n-1-i}$  
 设$y=-x-kp$,与上面完全相同  
+$$
+\begin{align}
+\sum_{i=0}^{p-1} x^{p-1-i} (-y)^{i}
+&= \sum_{i=0}^{p-1} x^{p-1-i} (x + kp)^{i} \\
+&\equiv x^{p-1} p \\
+&\not\equiv 0 \pmod{p^{2}}
+\end{align}
+$$
+
 %% $$\begin{align}
 \sum_{i=0}^{p-1}x^{p-1-i}(-y)^{i}
 &=\sum_{i=0}^{p-1}x^{p-1-i}(x+kp)^{i}\\
@@ -548,6 +693,17 @@ $n!=p^{\nu_{p}(n!)}(n!)_{p}$
 取$-1$，当且仅当模$m$的原根存在  
 ##### 推论  
 对素数$p$和正整数$\alpha$，有  
+$$
+\begin{align}
+\prod_{1 \le k < p^{\alpha}} k \equiv
+\begin{cases}
+1, & p = 2,\ \alpha \ge 3, \\
+-1, & \text{otherwise}
+\end{cases}
+\pmod{p^{\alpha}}
+\end{align}
+$$
+
 %% $$\begin{align}
 \prod_{1\leq k<p_{\alpha}}k\equiv
 \begin{cases}
@@ -571,6 +727,17 @@ $\binom{n}{k}\equiv\binom{\lfloor\frac{n}{p}\rfloor}{\lfloor\frac{k}{p}\rfloor}\
 $Proof$  
 $\binom{p}{n}\equiv[n=0\lor n=p](\bmod p)$  
 $f(x)=ax^{n}+bx^{m}$  
+$$
+\begin{align}
+(f(x))^{p}
+&= (a x^{n} + b x^{m})^{p} \\
+&= \sum_{k=0}^{p} \binom{p}{k} (a x^{n})^{k} (b x^{m})^{p-k} \\
+&= a^{p} x^{pn} + b^{p} x^{pm} \\
+&= a (x^{p})^{n} + b (x^{p})^{m} \\
+&= f(x^{p}) \pmod{p}
+\end{align}
+$$
+
 %% $$\begin{align}
 (f(x))^{p}
 &=(ax^{n}+bx^{m})^{p}\\
@@ -587,6 +754,15 @@ $\binom{n}{k}=p^{\nu_{p}(n!)-\nu_{p}(k!)-\nu_{p}((n-k)!)}\frac{(n!)_{p}}{(k!)_{p
 ##### 一般模数情况  
 用中国剩余定理直接计算即可  
 $m=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}...p_{s}^{\alpha_{s}}$  
+$$
+\begin{cases}
+\binom{n}{k} \equiv r_{1} \pmod{p_{1}^{\alpha_{1}}}, \\
+\binom{n}{k} \equiv r_{2} \pmod{p_{2}^{\alpha_{2}}}, \\
+\vdots \\
+\binom{n}{k} \equiv r_{s} \pmod{p_{s}^{\alpha_{s}}}.
+\end{cases}
+$$
+
 %% $$\begin{cases}
 \binom{n}{k}\equiv r_{1} (\bmod p_{1}^{\alpha_{1}})\\
 \binom{n}{k}\equiv r_{2} (\bmod p_{2}^{\alpha_{2}})\\
@@ -606,6 +782,19 @@ $2.$若$f'(x_{0})\equiv0(\bmod p)$且$f'(x_{0})\equiv0(\bmod p^{e})$，则$t=0,1
 $3.$若$f'(x_{0})\equiv0(\bmod p)$且$f'(x_{0})\not\equiv0(\bmod p^{e})$，则不能由上式构造  
 $Proof$  
 假设$x$是解，带入后有  
+$$
+\begin{align}
+f(x_{0} + p^{e-1} t)
+&\equiv \sum_{i=0}^{n} a_{i} (x_{0} + p^{e-1} t)^{i} \\
+&\equiv \sum_{i=0}^{n} a_{i} \sum_{j=0}^{i} \binom{i}{j} x_{0}^{\, i-j} (p^{e-1} t)^{j} \\
+&\equiv \sum_{j=0}^{n} (p^{e-1} t)^{j} \sum_{i=j}^{n} a_{i} \binom{i}{j} x_{0}^{\, i-j} \\
+&\equiv \sum_{i=0}^{n} a_{i} \binom{i}{0} x_{0}^{\, i}
+   + p^{e-1} t \sum_{i=1}^{n} a_{i} \binom{i}{1} x_{0}^{\, i-1} \\
+&\equiv f(x_{0}) + p^{e-1} t\, f'(x_{0}) \\
+&\equiv 0 \pmod{p^{e}}
+\end{align}
+$$
+
 %% $$\begin{align}
 f(x_{0}+p^{e-1}t)
 &\equiv \sum_{i=0}^{n}a_{i}(x_{0}+p^{e-1}t)^{i}\\
@@ -680,6 +869,16 @@ $n=2$二次剩余
 $gcd(a,p)=1$，若存在整数$x$使得$x^{2}\equiv a(\bmod p)$，则称$a$为模$p$的二次剩余，否则称$a$为模$p$的二次非剩余  
 ### $Euler$判别法  
 对奇素数$p$，和满足$gcd(a,p)=1$的$a$，有  
+$$
+\begin{align}
+a^{\frac{p-1}{2}} \equiv
+\begin{cases}
+1 \pmod{p}, & \exists\, x \in \mathbb{Z},\ a \equiv x^{2} \pmod{p}, \\[6pt]
+-1 \pmod{p}, & \text{otherwise}.
+\end{cases}
+\end{align}
+$$
+
 %% $$\begin{align}
 a^{\frac{p-1}{2}}\equiv
 \begin{cases}
@@ -698,6 +897,17 @@ $Proof$
   
 #### $Legendre$符号  
 对奇素数$p$和整数$a$，定义$Legendre$符号如下：  
+$$
+\begin{align}
+\left( \frac{a}{p} \right) =
+\begin{cases}
+0, & p \mid a, \\[6pt]
+1, & p \nmid a \ \land\ \exists\, x \in \mathbb{Z},\ a \equiv x^{2} \pmod{p}, \\[6pt]
+-1, & \text{otherwise}.
+\end{cases}
+\end{align}
+$$
+
 %% $$\begin{align}
 (\frac{a}{p})=
 \begin{cases}
@@ -757,6 +967,20 @@ $gcd(m_{1},m_{2})=1,\lambda(m_{1}m_{2})=lcm(\lambda(m_1)\lambda(m_{2}))$
 ###### 引理  
 对于$m=p^{e}$，$p$为奇素数且$e\in N_{+}$，$\lambda(m)=p^{e-1}(p-1)$  
 ###### 定理  
+$$
+\begin{align}
+\lambda(m) =
+\begin{cases}
+\varphi(m), 
+& m = 1,\, 2,\, 4,\, p^{e},\ p \text{ odd},\ e \in \mathbb{N}_{+}, \\[6pt]
+\dfrac{1}{2}\varphi(m), 
+& m = 2^{e},\ e \ge 3, \\[6pt]
+\operatorname{lcm}\!\bigl(\lambda(p_{1}^{e_{1}}),\, \lambda(p_{2}^{e_{2}}),\, \dots,\, \lambda(p_{s}^{e_{s}})\bigr),
+& m = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{s}^{e_{s}}.
+\end{cases}
+\end{align}
+$$
+
 %% $$\begin{align}
 \lambda(m)=
 \begin{cases}
