@@ -184,50 +184,50 @@ void get_dsum(int n){
 }
 ```
 
-### 狄利克雷卷积
-$(f*g)(n)=\sum_{d|n} f(d)g(\frac{n}{d})$
+### 狄利克雷卷积  
+$(f*g)(n)=\sum_{d|n} f(d)g(\frac{n}{d})$  
 $waiting$
-### 数论分块
-用于计算形如$\sum_{i=1}^{n}f(i)g(\lfloor \frac{n}{i} \rfloor)$的式子
-若能$O(1)$预处理$f$的前缀和,则可在$O(\sqrt n)$的时间计算上式
-#### 一维
-先看简单情况考虑计算$\sum_{i=1}^{n} \lfloor \frac{n}{i} \rfloor$,即为$f(i)=1,g(i)=i$
-我们按照$\lfloor \frac{n}{i} \rfloor=d$的值分块,设这块区间为$[l,r]$
-则有$d \leq \frac{n}{i} < d+1$ ,取倒数有$\frac{1}{d+1} < \frac{i}{n} \leq \frac{1}{d}$,
-则$\lfloor\frac{n}{d+1} \rfloor+1 \leq {i} \leq \lfloor\frac{n}{d}\rfloor$
-右端点为$r=\lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$
-#### 向上取整
-计算$\sum_{i=1}^{n}f(i)g(\lceil \frac{n}{i} \rceil)$
-注意到 $\lceil \frac{n}{i} \rceil=\lfloor \frac{n-1}{i} \rfloor+1$
-$\sum_{i=1}^{n}f(i)g(\lceil \frac{n}{i} \rceil)=f(n)g(1)+\sum_{i=1}^{n-1}f(i)g(\lfloor \frac{n-1}{i} \rfloor+1)$
-#### 多维
-计算$\sum_{i=1}^{n}f(i)g(\lfloor \frac{n_{1}}{i} \rfloor,\lfloor \frac{n_{2}}{i} \rfloor,...,\lfloor \frac{n_{m}}{i} \rfloor)$
-只需要对一个$l$取交集即可，$r=min_{i=1}^{m} {\lfloor\frac{n_{i}}{\lfloor\frac{n_{i}}{l}\rfloor}\rfloor}$
-#### 任意指数
-计算$\sum_{i=1}^{\lfloor n^{\frac{a}{b}} \rfloor}f(i)g(\lfloor \frac{n^{a}}{i^{b}}\rfloor)$
-同上可知$\lfloor\frac{n^{\frac{a}{b}}}{(d+1)^{\frac{1}{b}}} \rfloor+1 \leq {i} \leq \lfloor\frac{n^{\frac{a}{b}}}{d^{\frac{1}{b}}}\rfloor$
-复杂度为$O(n^{\frac{a}{b+1}})$
+### 数论分块  
+用于计算形如$\sum_{i=1}^{n}f(i)g(\lfloor \frac{n}{i} \rfloor)$的式子  
+若能$O(1)$预处理$f$的前缀和,则可在$O(\sqrt n)$的时间计算上式  
+#### 一维  
+先看简单情况考虑计算$\sum_{i=1}^{n} \lfloor \frac{n}{i} \rfloor$,即为$f(i)=1,g(i)=i$  
+我们按照$\lfloor \frac{n}{i} \rfloor=d$的值分块,设这块区间为$[l,r]$  
+则有$d \leq \frac{n}{i} < d+1$ ,取倒数有$\frac{1}{d+1} < \frac{i}{n} \leq \frac{1}{d}$,  
+则$\lfloor\frac{n}{d+1} \rfloor+1 \leq {i} \leq \lfloor\frac{n}{d}\rfloor$  
+右端点为$r=\lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$  
+#### 向上取整  
+计算$\sum_{i=1}^{n}f(i)g(\lceil \frac{n}{i} \rceil)$  
+注意到 $\lceil \frac{n}{i} \rceil=\lfloor \frac{n-1}{i} \rfloor+1$  
+$\sum_{i=1}^{n}f(i)g(\lceil \frac{n}{i} \rceil)=f(n)g(1)+\sum_{i=1}^{n-1}f(i)g(\lfloor \frac{n-1}{i} \rfloor+1)$  
+#### 多维  
+计算$\sum_{i=1}^{n}f(i)g(\lfloor \frac{n_{1}}{i} \rfloor,\lfloor \frac{n_{2}}{i} \rfloor,...,\lfloor \frac{n_{m}}{i} \rfloor)$  
+只需要对一个$l$取交集即可，$r=min_{i=1}^{m} {\lfloor\frac{n_{i}}{\lfloor\frac{n_{i}}{l}\rfloor}\rfloor}$  
+#### 任意指数  
+计算$\sum_{i=1}^{\lfloor n^{\frac{a}{b}} \rfloor}f(i)g(\lfloor \frac{n^{a}}{i^{b}}\rfloor)$  
+同上可知$\lfloor\frac{n^{\frac{a}{b}}}{(d+1)^{\frac{1}{b}}} \rfloor+1 \leq {i} \leq \lfloor\frac{n^{\frac{a}{b}}}{d^{\frac{1}{b}}}\rfloor$  
+复杂度为$O(n^{\frac{a}{b+1}})$  
 
-### 莫比乌斯反演
-#### 普通形式
-首先有恒等式$\sum_{d|n}\mu(d)=[n=1]$
-设$n=\prod p_{i}^{e_{i}}$,$n'=\prod p_{i}$,则$\sum_{d|n}=\sum_{i=0}^{k}(-1)^{i}\binom{k}{i}=(1+(-1))^{k}=[n=1]$
-即$\varepsilon=1*\mu$
-简单应用$[gcd(i,j)=1\sum_{d|gcd(i,j)}\mu(d)=\sum_{d}[d|i][d|j]\mu(d)$
-主要形式$f(n)=\sum_{d|n}g(d)<=>g(n)=\sum_{d|n}\mu(\frac{n}{d})f(d)$,可直接带入验证
-上述形式等价与$f=1*g<=>g=\mu*f$
-故$\mu*f=\mu*1*g=\epsilon*g=g$
-对$\varphi(n)$有,$n=\sum_{d|n}\varphi(d)$,即$id=1*\varphi$,则$\varphi=\mu*id$,$\varphi(n)=\sum_{d|n}d\mu(\frac{n}{d})$
-对$\sigma_{k}(n)=\sum_{d|n}d^{k}$,有$\sigma_{k}=1*id_{k}$,则$id_{k}=\mu*\sigma_{k}$
-对互异素因子数目函数$\omega(n)=\sum_{d|n}[d\in P]$,即$\omega=1*1_{P}$,则$1_{P}=\mu*\omega$,$[n\in P]=\sum_{d}\mu(\frac{n}{d})\omega(d)$
-#### 拓展形式
-$f(n)=\sum_{n|d}g(d)<=>g(n)=\sum_{n|d}\mu(\frac{d}{n})f(d)$
-$f(n)=\prod_{d|n}g(d)<=>g(n)=\prod_{d|n}f(d)^{\mu(\frac{n}{d})}$
-$f(n)=\sum_{d|n}\alpha(\frac{n}{d})g(n)<=>g(n)=\sum_{d|n}\alpha^{-1}(\frac{n}{d})f(d)$,即$f=\alpha*g<=>g=\alpha^{-1}*f$,$\alpha^{-1}$为$\alpha$的$Dirichlet$逆
-$f(n)=\sum_{i=1}^{n}g(\lfloor\frac{n}{i}\rfloor)<=>g(n)=\sum_{i=1}^{n}\mu(i)f(\lfloor\frac{n}{i}\rfloor)$
+### 莫比乌斯反演  
+#### 普通形式  
+首先有恒等式$\sum_{d|n}\mu(d)=[n=1]$  
+设$n=\prod p_{i}^{e_{i}}$,$n'=\prod p_{i}$,则$\sum_{d|n}=\sum_{i=0}^{k}(-1)^{i}\binom{k}{i}=(1+(-1))^{k}=[n=1]$  
+即$\varepsilon=1*\mu$  
+简单应用$[gcd(i,j)=1\sum_{d|gcd(i,j)}\mu(d)=\sum_{d}[d|i][d|j]\mu(d)$  
+主要形式$f(n)=\sum_{d|n}g(d)<=>g(n)=\sum_{d|n}\mu(\frac{n}{d})f(d)$,可直接带入验证  
+上述形式等价与$f=1*g<=>g=\mu*f$  
+故$\mu*f=\mu*1*g=\epsilon*g=g$  
+对$\varphi(n)$有,$n=\sum_{d|n}\varphi(d)$,即$id=1*\varphi$,则$\varphi=\mu*id$,$\varphi(n)=\sum_{d|n}d\mu(\frac{n}{d})$  
+对$\sigma_{k}(n)=\sum_{d|n}d^{k}$,有$\sigma_{k}=1*id_{k}$,则$id_{k}=\mu*\sigma_{k}$  
+对互异素因子数目函数$\omega(n)=\sum_{d|n}[d\in P]$,即$\omega=1*1_{P}$,则$1_{P}=\mu*\omega$,$[n\in P]=\sum_{d}\mu(\frac{n}{d})\omega(d)$  
+#### 拓展形式  
+$f(n)=\sum_{n|d}g(d)<=>g(n)=\sum_{n|d}\mu(\frac{d}{n})f(d)$  
+$f(n)=\prod_{d|n}g(d)<=>g(n)=\prod_{d|n}f(d)^{\mu(\frac{n}{d})}$  
+$f(n)=\sum_{d|n}\alpha(\frac{n}{d})g(n)<=>g(n)=\sum_{d|n}\alpha^{-1}(\frac{n}{d})f(d)$,即$f=\alpha*g<=>g=\alpha^{-1}*f$,$\alpha^{-1}$为$\alpha$的$Dirichlet$逆  
+$f(n)=\sum_{i=1}^{n}g(\lfloor\frac{n}{i}\rfloor)<=>g(n)=\sum_{i=1}^{n}\mu(i)f(\lfloor\frac{n}{i}\rfloor)$  
 
-#### $Dirichlet$前缀和
-如果将每一个素数都看作一个维度，这就是一种高维前缀和．从小到大遍历所有素数 𝑝，并将 𝑛处的函数值累加到 𝑛𝑝处．这和$Eratosthenes$筛法 的遍历顺序是一致的．因此，这一算法可以在 $𝑂(𝑛log⁡log⁡𝑛)$时间内计算出长度为 $𝑛$ 的数列的 $Dirichlet$ 前缀和．类似地，利用逐维差分就可以在相同时间复杂度内求出数列的 $Dirichlet$ 差分．
+#### $Dirichlet$前缀和  
+如果将每一个素数都看作一个维度，这就是一种高维前缀和．从小到大遍历所有素数 𝑝，并将 𝑛处的函数值累加到 𝑛𝑝处．这和$Eratosthenes$筛法 的遍历顺序是一致的．因此，这一算法可以在 $𝑂(𝑛log⁡log⁡𝑛)$时间内计算出长度为 $𝑛$ 的数列的 $Dirichlet$ 前缀和．类似地，利用逐维差分就可以在相同时间复杂度内求出数列的 $Dirichlet$ 差分．  
 ```cpp
 int f[N],g[N];  
 void di_presum(int n){  
@@ -252,35 +252,35 @@ void di_diff(int n){
 }
 ```
 
-### 杜教筛
-用低于线性的时间求$S(n)=\sum_{i=1}^{n}f(i)$
-构造一个$g$,$g$满足$g,f*g$的前缀和可以很快的求出
-$\sum_{i=1}^{n}(f*g)(i)=\sum_{i=1}^{n}\sum_{d|i}f(\frac{i}{d})g(d)=\sum_{i=1}^{n}g(i)S(\lfloor\frac{n}{i}\rfloor)$,最后一步可以这么理解$f,g$括号内的乘积都是小于等于$n$的
-则$g(1)S(n)=\sum_{i=1}^{n}(f*g)(i)-\sum_{i=2}^{n}g(i)S(\lfloor\frac{n}{i}\rfloor)$
-时间复杂度$O(n^{\frac{3}{4}})$
+### 杜教筛  
+用低于线性的时间求$S(n)=\sum_{i=1}^{n}f(i)$  
+构造一个$g$,$g$满足$g,f*g$的前缀和可以很快的求出  
+$\sum_{i=1}^{n}(f*g)(i)=\sum_{i=1}^{n}\sum_{d|i}f(\frac{i}{d})g(d)=\sum_{i=1}^{n}g(i)S(\lfloor\frac{n}{i}\rfloor)$,最后一步可以这么理解$f,g$括号内的乘积都是小于等于$n$的  
+则$g(1)S(n)=\sum_{i=1}^{n}(f*g)(i)-\sum_{i=2}^{n}g(i)S(\lfloor\frac{n}{i}\rfloor)$  
+时间复杂度$O(n^{\frac{3}{4}})$  
 ### Min_25筛
-低于线性时间求积性函数前缀和
-要求：$f(p)$是关于$p$的可以快速求值的完全积性函数之和；$f(p^{c})$可以快速求值
-$p_{k}$为第$k$小的质数，$p_{0}=1$
-$lpf(n)$为$n$的最小质因数，$lpf(1)=1$
-$F_{prime}(n)=\sum_{p\leq n}f(p)$
-$F_{k}(n)=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)$
-发现答案即为$F_{1}(n)+f(1)$
-$$\begin{align}
+低于线性时间求积性函数前缀和  
+要求：$f(p)$是关于$p$的可以快速求值的完全积性函数之和；$f(p^{c})$可以快速求值  
+$p_{k}$为第$k$小的质数，$p_{0}=1$  
+$lpf(n)$为$n$的最小质因数，$lpf(1)=1$  
+$F_{prime}(n)=\sum_{p\leq n}f(p)$  
+$F_{k}(n)=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)$  
+发现答案即为$F_{1}(n)+f(1)$  
+$$\begin{aligned}
 F_{k}(n)
 &=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)\\
 &=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c}\leq n}f(p_{i}^{c})([c>1]+F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
 &=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c+1}\leq n}(f(p_{i}^{c+1})+f(p_{i}^{c})F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
-\end{align}$$
-考虑计算$F_{k}(n)$
-$1.$直接递推
-$2.$从大到小枚举$p$，当$p^{2}<n$时转移增加值不为零，可*后缀和优化*
-考虑计算$F_{prime}(n)$，*发现*只有$1,2,...,\lfloor\sqrt n\rfloor,\lfloor\frac{n}{\lfloor\sqrt n\rfloor}\rfloor,...,\lfloor\frac{n}{2}\rfloor,n$这几个点有用
-一般$f(p)=\sum a_{i}p^{c_{i}}$，我们计算$\sum_{p\leq m}g(p),g(p)=p^{s}$
-$G_{k}(n)$表示埃筛第$k$轮筛后剩下的$g$的和
-有递推公式$G_{k}(n)=G_{k-1}(n)-[p_{k}^{2}\leq n]g(p_{k})(G_{k-1}(\lfloor\frac{n}{p_{k}}\rfloor)-G_{k-1}({p_{k-1}}))$
-$G_{k-1}(\lfloor\frac{n}{p_{k}}\rfloor)-G_{k-1}({p_{k-1}})$的结果是最小质因子大于$p_{k-1}$的数的次方和
-然后就可以用$G$合并得到$F$了
+\end{aligned}$$
+考虑计算$F_{k}(n)$  
+$1.$直接递推  
+$2.$从大到小枚举$p$，当$p^{2}<n$时转移增加值不为零，可*后缀和优化*  
+考虑计算$F_{prime}(n)$，*发现*只有$1,2,...,\lfloor\sqrt n\rfloor,\lfloor\frac{n}{\lfloor\sqrt n\rfloor}\rfloor,...,\lfloor\frac{n}{2}\rfloor,n$这几个点有用  
+一般$f(p)=\sum a_{i}p^{c_{i}}$，我们计算$\sum_{p\leq m}g(p),g(p)=p^{s}$  
+$G_{k}(n)$表示埃筛第$k$轮筛后剩下的$g$的和  
+有递推公式$G_{k}(n)=G_{k-1}(n)-[p_{k}^{2}\leq n]g(p_{k})(G_{k-1}(\lfloor\frac{n}{p_{k}}\rfloor)-G_{k-1}({p_{k-1}}))$  
+$G_{k-1}(\lfloor\frac{n}{p_{k}}\rfloor)-G_{k-1}({p_{k-1}})$的结果是最小质因子大于$p_{k-1}$的数的次方和  
+然后就可以用$G$合并得到$F$了  
 ### 类欧几里得算法
 $f(a,b,c,n)=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor$
 $g(a,b,c,n)=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor ^{2}$
