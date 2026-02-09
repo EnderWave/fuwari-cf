@@ -266,13 +266,13 @@ $lpf(n)$为$n$的最小质因数，$lpf(1)=1$
 $F_{prime}(n)=\sum_{p\leq n}f(p)$  
 $F_{k}(n)=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)$  
 发现答案即为$F_{1}(n)+f(1)$  
-$$1+1=2$$
-$$\begin{aligned}
+$$2+1=3$$
+$$\begin{align*}
 F_{k}(n)
 &=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)\\
 &=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c}\leq n}f(p_{i}^{c})([c>1]+F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
 &=\sum_{k\leq i,p_{i}^{2}\leq n}\sum_{c\geq1,p_{i}^{c+1}\leq n}(f(p_{i}^{c+1})+f(p_{i}^{c})F_{i+1}(\lfloor\frac{n}{p_{i}^{c}}\rfloor))+F_{prime}(n)-F_{prime}(p_{k-1})\\
-\end{aligned}$$
+\end{align*}$$
 考虑计算$F_{k}(n)$  
 $1.$直接递推  
 $2.$从大到小枚举$p$，当$p^{2}<n$时转移增加值不为零，可*后缀和优化*  
