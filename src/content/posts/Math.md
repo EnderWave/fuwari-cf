@@ -14,8 +14,8 @@ lang: ''
 ### 例题
 #### [CF2144D](https://codeforces.com/contest/2144/problem/D)
 手玩一下（其实是打表），发现答案没有单调性，不能二分，考虑**枚举**。记$V=\max{c_{i}}$枚举发现，当$x>V$时，贡献是一定的，在$x<=V$时，发现价被限制在$[0,\frac{V}{x}]$里，枚举$x$,复杂度为$O(V\log{V})$。
-由于每次我们需要计算打折后价格为$i$的贡献，我们还需要维护一个**前缀和**来计算原价位于$[i*x,(i+1)*x-1]$的数的个数。
-**注意不要乘爆了**
+由于每次我们需要计算打折后价格为$i$的贡献，我们还需要维护一个**前缀和**来计算原价位于$[i*x,(i+1)*x-1]$的数的个数。  
+**注意不要乘爆了**  
 核心代码
 ```cpp
 ll ans=-1e18;
@@ -39,23 +39,23 @@ ll so(int x){
 ## 数论
 *这一部分只考虑整数*
 ### 一些定义
-**完全积性函数**
-$f$为完全积性函数，则$f(ab)=f(a)f(b)$
-**积性函数**
-$f$为积性函数，则在$(a,b)=1$时，有$f(ab)=f(a)f(b)$
-**常见的积性函数**
-$I(n)=1$
-$\varepsilon (n)=[n=1]$
-$id(n)=n$
-$\varphi (n)=\sum_{i=1}^{n} [(i,n)=1]= n\prod (1-\frac{1}{p_{i}})$,$p_{i}$为$n$的唯一分解中互不相同的质数
-$\mu (n)$莫比乌斯函数，$n=1$时，$\mu(n)=1$,当$n$的唯一分解的质数的次数都为1，$\mu(n)$为$-1$的质数种类次方，否则$\mu(n)=0$
-$d(n)$表示$n$的约数个数
-$\sigma(n)$表示$n$的约数和
-$\sigma_{k}(n)$表示n的约数的$k$次方的和（除数函数）
+**完全积性函数**  
+$f$为完全积性函数，则$f(ab)=f(a)f(b)$  
+**积性函数**  
+$f$为积性函数，则在$(a,b)=1$时，有$f(ab)=f(a)f(b)$  
+**常见的积性函数**  
+$I(n)=1$  
+$\varepsilon (n)=[n=1]$  
+$id(n)=n$  
+$\varphi (n)=\sum_{i=1}^{n} [(i,n)=1]= n\prod (1-\frac{1}{p_{i}})$,$p_{i}$为$n$的唯一分解中互不相同的质数  
+$\mu (n)$莫比乌斯函数，$n=1$时，$\mu(n)=1$,当$n$的唯一分解的质数的次数都为1，$\mu(n)$为$-1$的质数种类次方，否则$\mu(n)=0$  
+$d(n)$表示$n$的约数个数  
+$\sigma(n)$表示$n$的约数和  
+$\sigma_{k}(n)$表示n的约数的$k$次方的和（除数函数）  
 ### 筛法
 #### 埃拉托斯特尼筛法
-埃拉托斯特尼筛法筛素数
-主体思想是逐个去掉所有质数的倍数，枚举到的下一个就是质数
+埃拉托斯特尼筛法筛素数  
+主体思想是逐个去掉所有质数的倍数，枚举到的下一个就是质数  
 ```cpp
 int vis[N],pri[N],cnt;
 void Eratosthenes(int n){
@@ -73,7 +73,7 @@ void Eratosthenes(int n){
 }
 ```
 #### 线性筛（欧拉筛）
-线性筛的主体思想是让每个数都被自己最小的质因数筛掉
+线性筛的主体思想是让每个数都被自己最小的质因数筛掉  
 ```cpp
 void Euler(int n){
     cnt=0;
@@ -88,11 +88,11 @@ void Euler(int n){
     }
 }
 ```
-注意代码中$i \mod pri[j] = 0$说明已经到了$i$的最小质数，如果继续，那么接下来的数就不是被最小的质数筛掉了，以为$i$的最小质数是$pri[j]$
-##### 用线性筛求一些函数
-求$\varphi(n)$，设$p_{1}$为$n$的最小质因子,且$n=m  p_{1}$
-如果$(m,p_{1})=1$,$\varphi(n)=\varphi(p_{1}) \times \varphi(m)=(p_{1}-1)\varphi(m)$
-如果$(m,p_{1})\neq1$,$\varphi(n)=n \prod(1-\frac{1}{p_{i}})=mp_{1}\prod(1-\frac{1}{p_{i}})=p_{1}\varphi(m)$
+注意代码中$i \mod pri[j] = 0$说明已经到了$i$的最小质数，如果继续，那么接下来的数就不是被最小的质数筛掉了，以为$i$的最小质数是$pri[j]$  
+##### 用线性筛求一些函数  
+求$\varphi(n)$，设$p_{1}$为$n$的最小质因子,且$n=m  p_{1}$  
+如果$(m,p_{1})=1$,$\varphi(n)=\varphi(p_{1}) \times \varphi(m)=(p_{1}-1)\varphi(m)$  
+如果$(m,p_{1})\neq1$,$\varphi(n)=n \prod(1-\frac{1}{p_{i}})=mp_{1}\prod(1-\frac{1}{p_{i}})=p_{1}\varphi(m)$  
 ```cpp
 int phi[N];  
 void get_phi(int n){  
@@ -111,10 +111,10 @@ void get_phi(int n){
     }  
 }
 ```
-求$\mu(n)$,设$p_{1}$为$n$的最小质因子，$n=mp_{1}$
-$\mu(p^{k})=-1\times[k=1]$
-如果$(m,p_{1})=1$,$\mu(n)=\mu(p_{1})\times\mu(m)=-1\times\mu(m)$
-如果$(m,p_{1})\neq1$,$\mu(n)=0$
+求$\mu(n)$,设$p_{1}$为$n$的最小质因子，$n=mp_{1}$  
+$\mu(p^{k})=-1\times[k=1]$  
+如果$(m,p_{1})=1$,$\mu(n)=\mu(p_{1})\times\mu(m)=-1\times\mu(m)$  
+如果$(m,p_{1})\neq1$,$\mu(n)=0$  
 ```cpp
 int mu[N];  
 void get_mu(int n){  
@@ -133,12 +133,12 @@ void get_mu(int n){
     }  
 }
 ```
-求$d(n)$,设$n=\prod p_{i}^{a_{i}}$,$d(n)=\prod (a_{i}+1)$,$n=p_{1}m$,$p_{1}$为$n$的最小质因子
-如果$(m,p_{1})=1$,$d(n)=d(p_{1})d(m)=2d(m)$
-如果$(m,p_{1})\neq1$,$d(n)=d(p_{1}^{k})d(\frac{n}{p_{1}^{k}})$,$p_{1}^{k}||n$
-我们需要维护$k$，即最小质因子的个数，令$num_{i}$为$i$的最小质因子的个数，则有
-如果$(m,p_{1})=1$,$d(n)=d(p_{1})d(m)=2d(m)$，$num_{n}=1$
-如果$(m,p_{1})\neq1$,$d(n)=d(p_{1}^{k})d(\frac{n}{p_{1}^{k}})=\frac{(num_{m}+2)d(m)}{num_{m}+1}=\frac{(num_{n}+1)d(m)}{num_{n}}$,$num_{n}=num_{m}+1$
+求$d(n)$,设$n=\prod p_{i}^{a_{i}}$,$d(n)=\prod (a_{i}+1)$,$n=p_{1}m$,$p_{1}$为$n$的最小质因子  
+如果$(m,p_{1})=1$,$d(n)=d(p_{1})d(m)=2d(m)$  
+如果$(m,p_{1})\neq1$,$d(n)=d(p_{1}^{k})d(\frac{n}{p_{1}^{k}})$,$p_{1}^{k}||n$  
+我们需要维护$k$，即最小质因子的个数，令$num_{i}$为$i$的最小质因子的个数，则有  
+如果$(m,p_{1})=1$,$d(n)=d(p_{1})d(m)=2d(m)$，$num_{n}=1$  
+如果$(m,p_{1})\neq1$,$d(n)=d(p_{1}^{k})d(\frac{n}{p_{1}^{k}})=\frac{(num_{m}+2)d(m)}{num_{m}+1}=\frac{(num_{n}+1)d(m)}{num_{n}}$,$num_{n}=num_{m}+1$  
 ```cpp
 int d[N],num[N];  
 void get_d(int n){  
@@ -157,10 +157,10 @@ void get_d(int n){
     }  
 }
 ```
-求$\sigma(n)$,$\sigma(n)=\prod (1+p_{i}+...+p_{i}^{a_{i}})=\prod \frac{p_{i}^{a_{i}+1}-1}{p_{i}-1}$,$n=mp_{1}$,$p_{1}$为$n$的最小质因子
-令$g_{i}=\sum_{t=0}^{num_{i}}p_{1}^{t}$
-如果$(m,p_{1})=1$,$\sigma(n)=(1+p_{1})\sigma(m)$,$num_{n}=1$,$g_{n}=1+p_{1}$
-如果$(m,p_{1})\neq1$,$\sigma(n)=\sigma(p_{1}^{num_{m}+1})\sigma(\frac{m}{p_{1}^{num_{m}}})=\frac{(p_{1}^{num_{m}+2}-1)\sigma(m)}{p_{1}^{num_{m}+1}-1}=\frac{g_{n}\sigma(m)}{g_{m}}$,$g_{n}=1+p_{1}g_{m}$
+求$\sigma(n)$,$\sigma(n)=\prod (1+p_{i}+...+p_{i}^{a_{i}})=\prod \frac{p_{i}^{a_{i}+1}-1}{p_{i}-1}$,$n=mp_{1}$,$p_{1}$为$n$的最小质因子  
+令$g_{i}=\sum_{t=0}^{num_{i}}p_{1}^{t}$  
+如果$(m,p_{1})=1$,$\sigma(n)=(1+p_{1})\sigma(m)$,$num_{n}=1$,$g_{n}=1+p_{1}$  
+如果$(m,p_{1})\neq1$,$\sigma(n)=\sigma(p_{1}^{num_{m}+1})\sigma(\frac{m}{p_{1}^{num_{m}}})=\frac{(p_{1}^{num_{m}+2}-1)\sigma(m)}{p_{1}^{num_{m}+1}-1}=\frac{g_{n}\sigma(m)}{g_{m}}$,$g_{n}=1+p_{1}g_{m}$  
 ```cpp
 int dsum[N],gsum[N];  
 void get_dsum(int n){  
@@ -307,28 +307,24 @@ f(a,b,c,n)
 &=\sum_{j=0}^{m-1}n-\lfloor\frac{cj+c-b-1}{a}\rfloor \\
 &=mn-f(c,c-b-1,a,m-1)
 \end{align}$$
-计算$g$,$h$
+计算$g,h$
 $$ \begin{align} 
 g(a,b,c,n)
-
 &=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor ^{2}\\
-
 &=\sum_{i=0}^{n}\lfloor \frac{(\lfloor \frac{a}{c} \rfloor\times c+(a\bmod c))i+\lfloor \frac{b}{c} \rfloor\times c+(b\bmod c)}{c} \rfloor ^{2}\\
-
 &=\sum_{i=0}^{n}(\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor+\lfloor \frac{a}{c} \rfloor i+\lfloor \frac{b}{c} \rfloor)^{2}\\
-
 &=\sum_{i=0}^{n}\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor ^{2}+(\lfloor \frac{a}{c} \rfloor i)^{2}+\lfloor \frac{b}{c} \rfloor^{2}+2\times\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor\lfloor \frac{a}{c} \rfloor i + 2\times\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor\lfloor \frac{b}{c} \rfloor +2\times i\lfloor \frac{a}{c} \rfloor\lfloor \frac{b}{c} \rfloor \\
+&=g(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor^{2}+(n+1)\lfloor \frac{b}{c} \rfloor^{2}+2\times\lfloor \frac{a}{c} \rfloor h(a\bmod c,b\bmod c,c,n)+2\times\lfloor \frac{b}{c} \rfloor f(a\bmod c,b\bmod c,c,n)+n(n+1)\lfloor \frac{a}{c} \rfloor\lfloor \frac{b}{c} \rfloor\\
+\end{align}$$  
 
-&=g(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor^{2}+(n+1)\lfloor \frac{b}{c} \rfloor^{2}+2\times\lfloor \frac{a}{c} \rfloor h(a\bmod c,b\bmod c,c,n)+2\times\lfloor \frac{b}{c} \rfloor f(a\bmod c,b\bmod c,c,n)+n(n+1)\lfloor \frac{a}{c} \rfloor\lfloor \frac{b}{c} \rfloor
-\end{align}$$
-如果$a<c$,$b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$
+如果$a<c,b<c,m=\lfloor \frac{an+b}{c} \rfloor$
 $$ \begin{align} 
 g(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor^{2}\\
 &=\sum_{i=0}^{n}\sum_{j=0}^{m-1}(2j+1)[j<\lfloor \frac{ai+b}{c} \rfloor]\\
 &=\sum_{j=0}^{m-1}(2j+1)\sum_{i=0}^{n}[ i>\lfloor\frac{cj+c-b-1}{a}\rfloor ]\\
 &=\sum_{j=0}^{m-1}(2j+1)(n-\lfloor\frac{cj+c-b-1}{a}\rfloor) \\
-&=m^{2}n-2\times g(c,c-b-1,a,m-1)-f(c,c-b-1,a,m-1)
+&=m^{2}n-2\times g(c,c-b-1,a,m-1)-f(c,c-b-1,a,m-1)\\
 \end{align}$$
 
 $$ \begin{align} 
@@ -336,7 +332,7 @@ h(a,b,c,n)
 &=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor i\\
 &=\sum_{i=0}^{n}\lfloor \frac{(\lfloor \frac{a}{c} \rfloor\times c+(a\bmod c))i+\lfloor \frac{b}{c} \rfloor\times c+(b\bmod c)}{c} \rfloor i\\
 &=\sum_{i=0}^{n}\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor i+\lfloor \frac{a}{c} \rfloor i^{2}+\lfloor \frac{b}{c} \rfloor i\\
-&=h(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor+\frac{n(n+1)}{2}\lfloor\frac{b}{c} \rfloor
+&=h(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor+\frac{n(n+1)}{2}\lfloor\frac{b}{c} \rfloor\\
 \end{align}$$
 如果$a<c$,$b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$
 $$ \begin{align} 
