@@ -266,6 +266,14 @@ $lpf(n)$为$n$的最小质因数，$lpf(1)=1$
 $F_{prime}(n)=\sum_{p\leq n}f(p)$  
 $F_{k}(n)=\sum_{i=2}^{n}[p_{k}\leq lpf(i)]f(i)$  
 发现答案即为$F_{1}(n)+f(1)$  
+$$
+\begin{align}
+F_{k}(n)
+&= \sum_{i=2}^{n} [p_{k} \le lpf(i)] f(i) \\
+&= \sum_{k \le i,\, p_{i}^{2} \le n} \sum_{c \ge 1,\, p_{i}^{c} \le n} f(p_{i}^{c}) \bigl([c > 1] + F_{i+1}(\lfloor n / p_{i}^{c} \rfloor)\bigr) + F_{\text{prime}}(n) - F_{\text{prime}}(p_{k-1}) \\
+&= \sum_{k \le i,\, p_{i}^{2} \le n} \sum_{c \ge 1,\, p_{i}^{c+1} \le n} \bigl(f(p_{i}^{c+1}) + f(p_{i}^{c}) F_{i+1}(\lfloor n / p_{i}^{c} \rfloor)\bigr) + F_{\text{prime}}(n) - F_{\text{prime}}(p_{k-1})
+\end{align}
+$$
 
 %% $$\begin{align}
 F_{k}(n)
