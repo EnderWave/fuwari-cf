@@ -118,7 +118,6 @@ export default defineConfig({
 		],
 		rehypePlugins: [
 			rehypeKatex,
-			{ strict: false },
 			rehypeSlug,
 			[
 				rehypeComponents,
