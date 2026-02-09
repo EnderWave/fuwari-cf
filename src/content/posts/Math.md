@@ -534,7 +534,7 @@ $\sum_{i=0}^{n-1}x^{i}y^{n-1-i}\equiv nx^{n-1}\not\equiv 0(\bmod p)$
 $x^{n}-y^{n}=(x-y)\sum_{i=0}^{n-1}x^{i}y^{n-1-i}$  
 则有$\nu_{p}(x^{n}-y^{n})=\nu_{p}(x-y)$  
   
-$p|x+y<=>x\equiv -y(\bmod p)$  
+$p|x+y<=>x\equiv -y(\bmod{p})$  
 $\sum_{i=0}^{n-1}x^{i}(-y)^{n-1-i}\equiv nx^{n-1}\not\equiv 0(\bmod p)$  
 $x^{n}+y^{n}=(x+y)\sum_{i=0}^{n-1}x^{i}(-y)^{n-1-i}$  
 则有$\nu_{p}(x^{n}+y^{n})=\nu_{p}(x+y)$  
@@ -796,7 +796,7 @@ $$
 
 
 $1.$对任意整数$a$，$a^{\frac{p-1}{2}}\equiv (\frac{a}{p})(\bmod p)$  
-则$(\frac{1}{p})=1$$(\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$  
+则$(\frac{1}{p})=1,(\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$  
 $2.a_{1}\equiv a_{2}(\bmod p)=>(\frac{a_{1}}{p})=(\frac{a_{2}}{p})$  
 $3.$（完全积性）对任意整数$a_{1},a_{2},(\frac{a_{1}a_{2}}{p})=(\frac{a_{1}}{p})(\frac{a_{2}}{p})$  
 则对整数$a,b,p\nmid b,(\frac{ab^{2}}{p})=(\frac{a}{p})$  
