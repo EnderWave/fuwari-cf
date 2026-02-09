@@ -404,12 +404,12 @@ $i^{-1}\equiv -\lfloor \frac{p}{i}\rfloor(p\bmod i)^{-1} \mod p$
 ### 中国剩余定理$(CRT)$  
 #### 基本形式  
 $gcd(n_{1},n_{2},...,n_{k})=1$  
-$$\begin{cases}
+%% $$\begin{cases}
 x\equiv a_{1}(\bmod n_{1})\\
 x\equiv a_{2}(\bmod n_{2})\\
 ...\\
 x\equiv a_{k}(\bmod n_{k})\\
-\end{cases}$$ 
+\end{cases}$$ %% 
 求$x$  
 $1.$计算$n=\prod_{i=1}^{k}n_{i}$  
 $2.m_{i}=\frac{n}{n_{i}},m_{i}^{-1}$为$m_{i}\bmod n_{i}$的逆元  
@@ -428,12 +428,12 @@ int crt(int k){
 ```
 #### $Garner$  
 $a<\prod_{i=1}^{k}p_{i}$且  
-$$\begin{cases}
+%% $$\begin{cases}
 a\equiv a_{1}(\bmod p_{1})\\
 a\equiv a_{2}(\bmod p_{2})\\
 ...\\
 a\equiv a_{k}(\bmod p_{k})\\
-\end{cases}$$ 
+\end{cases}$$ %% 
 构造$a=x_{1}+x_{2}p_{1}+...x_{k}p_{1}...p_{k-1}$,设$p_{i}r_{i,j}\equiv1(\bmod p_{j})$  
 带入有  
 $x_{1}\equiv a_{1}(\bmod p_{1})$  
@@ -579,12 +579,12 @@ $\binom{n}{k}=p^{\nu_{p}(n!)-\nu_{p}(k!)-\nu_{p}((n-k)!)}\frac{(n!)_{p}}{(k!)_{p
 ##### 一般模数情况  
 用中国剩余定理直接计算即可  
 $m=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}...p_{s}^{\alpha_{s}}$  
-$$\begin{cases}
+%% $$\begin{cases}
 \binom{n}{k}\equiv r_{1} (\bmod p_{1}^{\alpha_{1}})\\
 \binom{n}{k}\equiv r_{2} (\bmod p_{2}^{\alpha_{2}})\\
 ...\\
 \binom{n}{k}\equiv r_{s} (\bmod p_{s}^{\alpha_{s}})\\
-\end{cases}$$ 
+\end{cases}$$ %% 
 ### 同余方程  
 #### 定义  
 对整数$m$和一元整系数多项式$f(x)=\sum_{i=0}^{n}a_{i}x^{i}$,其中未知数$x\in Z_{m}$，称形如$f(x)\equiv 0(\bmod m)$的方程为关于未知数$x$的模$m$的一元**同余方程**，若$a_{n}\not\equiv0(\bmod m)$,则上式称为$n$次同余方程  
