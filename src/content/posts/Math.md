@@ -300,13 +300,7 @@ f(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-f(a,b,c,n)
-&=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor\\
-&=\sum_{i=0}^{n}\lfloor \frac{(\lfloor \frac{a}{c} \rfloor\times c+(a\bmod c))i+\lfloor \frac{b}{c} \rfloor\times c+(b\bmod c)}{c} \rfloor\\
-&=\sum_{i=0}^{n}\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor+\lfloor \frac{a}{c} \rfloor i+\lfloor \frac{b}{c} \rfloor\\
-&=\frac{n(n+1)}{2}\lfloor \frac{a}{c} \rfloor+(n+1)\lfloor \frac{b}{c} \rfloor +f(a \bmod c,b\bmod c,c,n)\\
-\end{align}$$ %%
+
 如果$a<c,b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$,$\lfloor \frac{ai+b}{c} \rfloor=\lceil \frac{ai+b+1}{c} \rceil-1$  
 $$
 \begin{align}
@@ -324,19 +318,7 @@ f(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-f(a,b,c,n)
-&=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}[j<\lfloor \frac{ai+b}{c} \rfloor]\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}[j<\lceil \frac{ai+b+1}{c} \rceil-1]\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}[j+1<\lceil \frac{ai+b+1}{c} \rceil]\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}[j+1<\frac{ai+b+1}{c} ]\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}[jc+c<ai+b+1 ]\\
-&=\sum_{j=0}^{m-1}\sum_{i=0}^{n}[ i>\frac{cj+c-b-1}{a} ]\\
-&=\sum_{j=0}^{m-1}\sum_{i=0}^{n}[ i>\lfloor\frac{cj+c-b-1}{a}\rfloor ]\\
-&=\sum_{j=0}^{m-1}n-\lfloor\frac{cj+c-b-1}{a}\rfloor \\
-&=mn-f(c,c-b-1,a,m-1)
-\end{align}$$ %%
+
 计算$g,h$  
 $$
 \begin{align}
@@ -359,14 +341,7 @@ g(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-g(a,b,c,n)
-&=\sum_{i=0}^{n} \lfloor \frac{ai+b}{c} \rfloor ^{2}\\
-&=\sum_{i=0}^{n}\lfloor \frac{(\lfloor \frac{a}{c} \rfloor\times c+(a\bmod c))i+\lfloor \frac{b}{c} \rfloor\times c+(b\bmod c)}{c} \rfloor ^{2}\\
-&=\sum_{i=0}^{n}(\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor+\lfloor \frac{a}{c} \rfloor i+\lfloor \frac{b}{c} \rfloor)^{2}\\
-&=\sum_{i=0}^{n}\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor ^{2}+(\lfloor \frac{a}{c} \rfloor i)^{2}+\lfloor \frac{b}{c} \rfloor^{2}+2\times\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor\lfloor \frac{a}{c} \rfloor i + 2\times\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor\lfloor \frac{b}{c} \rfloor +2\times i\lfloor \frac{a}{c} \rfloor\lfloor \frac{b}{c} \rfloor \\
-&=g(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor^{2}+(n+1)\lfloor \frac{b}{c} \rfloor^{2}+2\times\lfloor \frac{a}{c} \rfloor h(a\bmod c,b\bmod c,c,n)+2\times\lfloor \frac{b}{c} \rfloor f(a\bmod c,b\bmod c,c,n)+n(n+1)\lfloor \frac{a}{c} \rfloor\lfloor \frac{b}{c} \rfloor\\
-\end{align}$$ %%  
+
 
 如果$a<c,b<c,m=\lfloor \frac{an+b}{c} \rfloor$  
 $$
@@ -380,14 +355,7 @@ g(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-g(a,b,c,n)
-&=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor^{2}\\
-&=\sum_{i=0}^{n}\sum_{j=0}^{m-1}(2j+1)[j<\lfloor \frac{ai+b}{c} \rfloor]\\
-&=\sum_{j=0}^{m-1}(2j+1)\sum_{i=0}^{n}[ i>\lfloor\frac{cj+c-b-1}{a}\rfloor ]\\
-&=\sum_{j=0}^{m-1}(2j+1)(n-\lfloor\frac{cj+c-b-1}{a}\rfloor) \\
-&=m^{2}n-2\times g(c,c-b-1,a,m-1)-f(c,c-b-1,a,m-1)\\
-\end{align}$$ %%
+
 $$
 \begin{align}
 h(a,b,c,n)
@@ -407,13 +375,7 @@ h(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-h(a,b,c,n)
-&=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor i\\
-&=\sum_{i=0}^{n}\lfloor \frac{(\lfloor \frac{a}{c} \rfloor\times c+(a\bmod c))i+\lfloor \frac{b}{c} \rfloor\times c+(b\bmod c)}{c} \rfloor i\\
-&=\sum_{i=0}^{n}\lfloor \frac{(a\bmod c)i+(b\bmod c)}{c} \rfloor i+\lfloor \frac{a}{c} \rfloor i^{2}+\lfloor \frac{b}{c} \rfloor i\\
-&=h(a\bmod c,b\bmod c,c,n)+\frac{n(n+1)(2n+1)}{6}\lfloor \frac{a}{c} \rfloor+\frac{n(n+1)}{2}\lfloor\frac{b}{c} \rfloor\\
-\end{align}$$ %%
+
 如果$a<c$,$b<c$,$m=\lfloor \frac{an+b}{c} \rfloor$  
 $$
 \begin{align}
@@ -436,16 +398,7 @@ h(a,b,c,n)
 \end{align}
 $$
 
-%% $$ \begin{align} 
-h(a,b,c,n)
-&=\sum_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor i\\
-&=\sum_{i=0}^{n}i\sum_{j=0}^{m-1}[j<\lfloor \frac{ai+b}{c} \rfloor]\\
-&=\sum_{j=0}^{m-1}\sum_{i=0}^{n}i[ i>\lfloor\frac{cj+c-b-1}{a}\rfloor ]\\
-&=\sum_{j=0}^{m-1}\sum_{i=\lfloor\frac{cj+c-b-1}{a}\rfloor+1}^{n}i\\
-&=\sum_{j=0}^{m-1}\frac{(n+\lfloor\frac{cj+c-b-1}{a}\rfloor+1)(n-\lfloor\frac{cj+c-b-1}{a}\rfloor)}{2}\\
-&=\frac{1}{2} \sum_{j=0}^{m-1}(n+1)n-\lfloor\frac{cj+c-b-1}{a}\rfloor-\lfloor\frac{cj+c-b-1}{a}\rfloor^{2}\\
-&=\frac{1}{2}(n+1)nm-\frac{1}{2}f(c,c-b-1,a,m-1)-\frac{1}{2}g(c,c-b-1,a,m-1)
-\end{align}$$ %%
+
 ### 最大公因数  
 #### 欧几里得算法  
 $gcd(a,b)=gcd(b,a\bmod b)$  
@@ -491,14 +444,7 @@ a^{\, (b \bmod \varphi(m)) + \varphi(m)}, & \gcd(a,m)\neq 1,\ b \ge \varphi(m).
 \end{align}
 $$
 
-%% $$\begin{align}
-a^{b}\equiv
-\begin{cases}
-&a^{b\bmod\varphi(m)},gcd(a,m)=1\\
-&a^{b},gcd(a,m)\neq1,b<\varphi(m)\\
-&a^{b\bmod \varphi(m)+\varphi(m)},gcd(a,m)\neq1,b\geq\varphi(m)
-\end{cases}
-\end{align}$$ %%
+
 ### 裴蜀定理  
 存在$x,y$使得$ax+by=gcd(x,y)$  
 #### 二元一次不定方程  
@@ -524,12 +470,7 @@ x \equiv a_{k} \pmod{n_{k}}.
 \end{cases}
 $$
 
-%% $$\begin{cases}
-x\equiv a_{1}(\bmod n_{1})\\
-x\equiv a_{2}(\bmod n_{2})\\
-...\\
-x\equiv a_{k}(\bmod n_{k})\\
-\end{cases}$$ %% 
+
 求$x$  
 $1.$计算$n=\prod_{i=1}^{k}n_{i}$  
 $2.m_{i}=\frac{n}{n_{i}},m_{i}^{-1}$为$m_{i}\bmod n_{i}$的逆元  
@@ -557,12 +498,7 @@ a \equiv a_{k} \pmod{p_{k}}.
 \end{cases}
 $$
 
-%% $$\begin{cases}
-a\equiv a_{1}(\bmod p_{1})\\
-a\equiv a_{2}(\bmod p_{2})\\
-...\\
-a\equiv a_{k}(\bmod p_{k})\\
-\end{cases}$$ %% 
+
 构造$a=x_{1}+x_{2}p_{1}+...x_{k}p_{1}...p_{k-1}$,设$p_{i}r_{i,j}\equiv1(\bmod p_{j})$  
 带入有  
 $x_{1}\equiv a_{1}(\bmod p_{1})$  
@@ -625,18 +561,7 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-\sum_{i=0}^{p-1}x^{p-1-i}y^{i}
-&=\sum_{i=0}^{p-1}x^{p-1-i}(x+kp)^{i}\\
-&=\sum_{i=0}^{p-1}x^{p-1-i}\sum_{j=0}^{i}\binom{i}{j}x^{i-j}(kp)^{j}\\
-&=\sum_{i=0}^{p-1}x^{p-1}\sum_{j=0}^{i}\binom{i}{j}(\frac{kp}{x})^{j}\\
-&=x^{p-1}\sum_{j=0}^{p-1}\sum_{i=j}^{p-1}\binom{i}{j}(\frac{kp}{x})^{j}\\
-&=x^{p-1}\sum_{j=0}^{p-1}(\frac{kp}{x})^{j}\sum_{i=j}^{p-1}\binom{i}{j}\\
-&\equiv x^{p-1}(p+\frac{kp}{x}\sum_{i=1}^{p-1}\binom{i}{1})\\
-&\equiv x^{p-1}(p+\frac{kp}{x}\frac{(p-1)p}{2})\\
-&\equiv x^{p-1}p\\
-&\not\equiv 0(\bmod p^{2})\\
-\end{align}$$ %%
+
 则有$\nu_{p}(x^{p}-y^{p})=\nu_{p}(x-y)+\nu_{p}(p)$  
 下面用数学归纳法证明第一个式子  
 设$n=p^{a}b$,$gcd(p,b)=1$  
@@ -657,12 +582,6 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-\sum_{i=0}^{p-1}x^{p-1-i}(-y)^{i}
-&=\sum_{i=0}^{p-1}x^{p-1-i}(x+kp)^{i}\\
-&\equiv x^{p-1}p\\
-&\not\equiv 0(\bmod p^{2})\\
-\end{align}$$ %%
 则有$\nu_{p}(x^{p}+y^{p})=\nu_{p}(x+y)+\nu_{p}(p)$  
 下面用数学归纳法证明第二个式子  
 设$n=p^{a}b$,$gcd(p,b)=1$  
@@ -704,14 +623,7 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-\prod_{1\leq k<p_{\alpha}}k\equiv
-\begin{cases}
-&1,p=2 , \alpha\geq3\\
-&-1,otherwise
-\end{cases}
-(\bmod p^{\alpha})
-\end{align}$$ %%
+
 #### 阶乘余数  
 计算$(n!)_{p}\bmod p$  
 $(n!)_{p}\equiv (-1)^{\lfloor \frac{n}{p}\rfloor}\cdot(n\bmod p)!\cdot(\lfloor \frac{n}{p}\rfloor!)_{p}(\bmod p)$  
@@ -738,14 +650,7 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-(f(x))^{p}
-&=(ax^{n}+bx^{m})^{p}\\
-&=\sum_{k=0}^{p}\binom{p}{k}(ax^{n})^{k}(bx^{m})^{p-k}\\
-&=a^{p}x^{pn}+b^{p}x^{pm}\\
-&=a(x^{p})^{n}+b(x^{p})^{m}\\
-&=f(x^{p})(\bmod p)
-\end{align}$$ %%
+
 $(1+x)^{n}=(1+x)^{p\lfloor\frac{n}{p}\rfloor}(1+x)^{n\bmod p}\equiv (1+x^{p})^{\lfloor\frac{n}{p}\rfloor}(1+x)^{n\bmod p}(\bmod p)$  
 对比系数有，$\binom{n}{k}\equiv\binom{\lfloor\frac{n}{p}\rfloor}{\lfloor\frac{k}{p}\rfloor}\binom{n\bmod p}{k\bmod p}(\bmod p)$  
 #### $exLucas$算法  
@@ -763,12 +668,7 @@ $$
 \end{cases}
 $$
 
-%% $$\begin{cases}
-\binom{n}{k}\equiv r_{1} (\bmod p_{1}^{\alpha_{1}})\\
-\binom{n}{k}\equiv r_{2} (\bmod p_{2}^{\alpha_{2}})\\
-...\\
-\binom{n}{k}\equiv r_{s} (\bmod p_{s}^{\alpha_{s}})\\
-\end{cases}$$ %% 
+
 ### 同余方程  
 #### 定义  
 对整数$m$和一元整系数多项式$f(x)=\sum_{i=0}^{n}a_{i}x^{i}$,其中未知数$x\in Z_{m}$，称形如$f(x)\equiv 0(\bmod m)$的方程为关于未知数$x$的模$m$的一元**同余方程**，若$a_{n}\not\equiv0(\bmod m)$,则上式称为$n$次同余方程  
@@ -795,15 +695,7 @@ f(x_{0} + p^{e-1} t)
 \end{align}
 $$
 
-%% $$\begin{align}
-f(x_{0}+p^{e-1}t)
-&\equiv \sum_{i=0}^{n}a_{i}(x_{0}+p^{e-1}t)^{i}\\
-&\equiv \sum_{i=0}^{n}a_{i}\sum_{j=0}^{i}\binom{i}{j}x_{0}^{i-j}(p^{e-1}t)^{j}\\
-&\equiv \sum_{j=0}^{n}(p^{e-1}t)^{j}\sum_{i=j}^{n}a_{i}\binom{i}{j}x_{0}^{i-j}\\
-&\equiv \sum_{i=0}^{n}a_{i}\binom{i}{0}x_{0}^{i}+p^{e-1}t\sum_{i=1}^{n}a_{i}\binom{i}{1}x_{0}^{i-1}\\
-&\equiv f(x_{0})+p^{e-1}tf'(x_{0})\\
-&\equiv 0(\bmod p^{e})\\
-\end{align}$$ %%
+
 则$tf'(x_{0})\equiv -\frac{f(x_{0})}{p^{e-1}}(\bmod p)$  
 三种情况对应即可  
   
@@ -879,13 +771,7 @@ a^{\frac{p-1}{2}} \equiv
 \end{align}
 $$
 
-%% $$\begin{align}
-a^{\frac{p-1}{2}}\equiv
-\begin{cases}
-1(\bmod p),(\exists x\in Z),a\equiv x^{2}(\bmod p)\\
--1 (\bmod p),otherwise
-\end{cases}
-\end{align}$$ %%
+
 $Proof$  
 由费马小定理,$a^{p-1}\equiv 1(\bmod p)$  
 则$(a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1)\equiv 0(\bmod p)$  
@@ -908,14 +794,7 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-(\frac{a}{p})=
-\begin{cases}
-0,p\mid a,\\
-1,(p\nmid a)\land((\exists x\in Z),a\equiv x^{2}(\bmod p))\\
--1,otherwise
-\end{cases}
-\end{align}$$ %%
+
 $1.$对任意整数$a$，$a^{\frac{p-1}{2}}\equiv (\frac{a}{p})(\bmod p)$  
 则$(\frac{1}{p})=1$$(\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$  
 $2.a_{1}\equiv a_{2}(\bmod p)=>(\frac{a_{1}}{p})=(\frac{a_{2}}{p})$  
@@ -981,14 +860,6 @@ $$
 \end{align}
 $$
 
-%% $$\begin{align}
-\lambda(m)=
-\begin{cases}
-\varphi(m), m=1,2,4,p^{e},2\nmid p,e\in N_{+}\\
-\frac{1}{2}\varphi(m),m=2^{e},e\geq3\\
-lcm\{\lambda(p_{1}^{e_{1}},\lambda(p_{2}^{e_{2}},...,\lambda(p_{s}^{e_{s}})\},m=p_{1}^{e_{1}}p_{2}^{e_{2}}...p_{s}^{e_{s}}
-\end{cases}
-\end{align}$$ %%
 #### $Carmichael$数  
 对于合数$n$，对所有满足$gcd(a,n)=1$的整数有$a^{n-1}\equiv1(\bmod n)$,则$n$为 $Carmichael$数  
 $Korselt$判别法  
