@@ -236,7 +236,7 @@ void di_presum(int n){
         if (vis[i])continue;  
         for (int j=1,ij=i;i*j<=n;j++,ij+=j){  
             vis[ij]=1;  
-            f[ij]+=g[i];  
+            f[ij]+=g[j];  
         }  
     }  
 }  
@@ -246,7 +246,7 @@ void di_diff(int n){
         if (vis[i])continue;  
         for (int j=n/i,ij=i*j;j>=1;j--,ij-=j){  
             vis[ij]=1;  
-            g[ij]-=f[i];  
+            g[ij]-=f[j];  
         }  
     }  
 }
@@ -351,7 +351,7 @@ g(a,b,c,n)
 &= \sum_{i=0}^{n} \sum_{j=0}^{m-1} (2j+1)\,[\, j < \left\lfloor \frac{ai+b}{c} \right\rfloor \,] \\
 &= \sum_{j=0}^{m-1} (2j+1) \sum_{i=0}^{n} \left[\, i > \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \,\right] \\
 &= \sum_{j=0}^{m-1} (2j+1)\left( n - \left\lfloor \frac{cj + c - b - 1}{a} \right\rfloor \right) \\
-&= m^{2} n - 2\, g(c,\, c-b-1,\, a,\, m-1) - f(c,\, c-b-1,\, a,\, m-1)
+&= m^{2} n - 2\, h(c,\, c-b-1,\, a,\, m-1) - f(c,\, c-b-1,\, a,\, m-1)
 \end{align}
 $$
 
@@ -453,6 +453,8 @@ $(x,y)=(x_{1}+t\frac{a_{2}}{gcd(a_{1},a_{2})},x_{2}-t\frac{a_{1}}{gcd(a_{1},a_{2
 #### $Frobenius$ 硬币问题  
 有$a_{1},a_{2},...,a_{n}$的面值的硬币若干种，且$gcd(a_{1},a_{2},...,a_{n})=1$，那么最大的不能被表示的面值为多少  
 $n=2$时，答案为$a_{1}a_{2}-a_{1}-a_{2}$  
+### $Stern-Brocot$树与$Farey$序列
+$waiting$
 ### 逆元  
 #### 线性求逆元  
 $p= \lfloor \frac{p}{i}\rfloor i +(p\bmod i)$  
