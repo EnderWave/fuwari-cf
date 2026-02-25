@@ -16,6 +16,13 @@ export const friendLinkSections: FriendLinkSection[] = [
 		title: "🌟 友情博客",
 		items: [
 			{
+				title: "我自己",
+				url: "https://www.enderwave.work/",
+				avatar: "https://i.postimg.cc/2S3Xkr1Z/tou-xiang.png",
+				desc: "呜呜呜",
+				email: "enderwave.com",
+			},
+			{
 				title: "Farewe1ll's Blog",
 				url: "https://blog.farewe1ll.com",
 				avatar: "https://avatar.farewe1ll.top",
