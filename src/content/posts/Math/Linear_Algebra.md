@@ -1,10 +1,10 @@
 ---
-title: Linear_Algebra
+title: 线性代数
 published: 2025-11-28
 description: ''
 image: ''
-tags: [Math，Xor]
-category: 'Math'
+tags: [数学，线性代数]
+category: '算法'
 draft: false 
 lang: ''
 ---
