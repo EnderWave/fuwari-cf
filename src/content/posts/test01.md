@@ -690,7 +690,8 @@ ax+by=c,x=x_{0}+b,y=y_{0}-a
 $$
 $$
 ax\equiv c(\bmod b)
-$$$$
+$$  这里有问题  
+$$
 n=2^{e_{2}}5^{e_{5}}t,f(n,N)=\lfloor\frac{N}{t}\rfloor
 $$
 $$
