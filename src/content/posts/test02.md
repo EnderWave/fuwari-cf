@@ -70,3 +70,39 @@ F(x)&=e^{e^{x}+c}\\
 F(x)&=e^{e^{x}-1}
 \end{align}
 $$
+$$
+\begin{align}
+1011 1001 0111 1010
+1000 0101 1000 0110
+1011 1001 + 1000 0110
+1011 1111
+1 00111 110 
+- 7 6
+-1+6/8 \times 2^-8
+-7/2^10
+
+\end{align}
+$$
+$f_{i}$表示$i$个点联通的方案数,$g_{i}$表示任意一图
+$$
+\begin{align}
+g_{n}&=2^{\binom{n}{2}}\\
+g_{n}&=\sum_{i=1}^{n}\binom{n-1}{i-1}f_{i}g_{n-i}\\
+g_{n}&=\sum_{i=1}^{n}\frac{(n-1)!}{(i-1)!(n-i)!}f_{i}g_{n-i}\\
+\frac{g_{n}}{(n-1)!}&=\sum_{i=1}^{n}\frac{f_{i}}{(i-1)!}\frac{g_{n-i}}{(n-i)!}\\
+G'(x)&=F'(x)G(x)\\
+F'(x)&=\frac{G'(x)}{G(x)}\\
+F(x)&=\ln G(x)+c\\
+\end{align}
+$$$$
+\begin{align}
+\sum_{S\subset T}\mu(\prod_{i\in S}i)\varphi(\prod_{i\in S}i)&=0&,k=0\\
+\sum_{S\subset T}\mu(\prod_{i\in S}i)\varphi(\prod_{i\in S}i)&=\sum_{S\subset T}(-1)^{|S|}\prod_{i\in S}(i-1)&,k=1\\
+&=\sum_{S\subset T}\prod_{i\in S}(-(i-1))\\
+f_{p}(x)&=1-(p-1)x^{p}\\
+ans&=\prod_{p}f_{p}(x)|_{x=1}-1\\
+\sum_{S\subset T}\mu(\prod_{i\in S}i)\varphi(\prod_{i\in S}i)&=\sum_{S\subset T}g_{S}\prod_{i\in S}(-(i-1)) 
+&,k=2\\
+
+\end{align}
+$$
