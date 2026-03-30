@@ -4,7 +4,7 @@ published: 2026-03-18
 tags:
   - test
 category: test
-draft: true
+draft: false
 ---
 
 $$f(x)=\sum_{i=0}^{n}a_{i}x^{i}$$

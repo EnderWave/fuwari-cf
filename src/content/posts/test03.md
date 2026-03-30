@@ -4,7 +4,7 @@ published: 2026-03-24
 tags:
   - test
 category: test
-draft: true
+draft: false
 ---
 $f(i)$表示钦定其中$i$种颜色恰好$S$个
 $g(i)$表示恰好$i$个颜色恰好$S$个

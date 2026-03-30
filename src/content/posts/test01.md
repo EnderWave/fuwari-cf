@@ -6,7 +6,7 @@ image: ""
 tags:
   - test
 category: test
-draft: true
+draft: false
 lang: ""
 ---
 # This is a test 

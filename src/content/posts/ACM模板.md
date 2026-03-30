@@ -4,7 +4,7 @@ published: 2026-03-21
 tags:
   - 模板
 category: 模板
-draft: true
+draft: false
 ---
 个人赛向
 # 多项式部分
