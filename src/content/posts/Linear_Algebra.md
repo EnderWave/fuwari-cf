@@ -1,12 +1,14 @@
 ---
 title: 线性代数
 published: 2025-11-28
-description: ''
-image: ''
-tags: [数学，线性代数]
-category: '算法'
-draft: false 
-lang: ''
+description: ""
+image: ""
+tags:
+  - 数学
+  - 线性代数
+category: 算法
+draft: false
+lang: ""
 ---
 # 线性代数部分
 :spoiler[别问为什么不在数学部分]
