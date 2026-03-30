@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "工科数学分析-3.30.md",
+                "file": "多项式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "工科数学分析-3.30"
+              "title": "多项式"
             }
           }
         ]
@@ -171,11 +171,11 @@
   },
   "active": "c07277e2e75a3c98",
   "lastOpenFiles": [
-    "工科数学分析-3.26.md",
+    "test03.md",
     "工科数学分析-3.30.md",
+    "工科数学分析-3.26.md",
     "工科数学分析-3.23.md",
     "工科数学分析-3.16.md",
-    "test03.md",
     "组合数学.md",
     "多项式.md",
     "ACM模板.md",
