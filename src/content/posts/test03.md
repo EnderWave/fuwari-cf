@@ -138,6 +138,125 @@ f(i)&\equiv[x^i]\prod_{i=1}^{|S|}\frac{1}{1-x^{a_i}}\bmod p\\
 \sum_{i}f(i)z^i&\equiv\prod_{i=1}^{|S|}\frac{1}{1-x^{a_i}}\bmod p\\
 \end{align}
 $$
+我们换个思路，注意到集合中每个元素很小，令$a_{i}=0/1$表示集合里有没有这个数  
+$$
+\begin{align}
+F(x)&=\prod_{i=1}^{n}(\frac{1}{1-x^i})^{a_{i}}\\
+\ln(F(x))&=\sum_{i=1}^{n}a_{i}\ln(\frac{1}{1-x^i})\\
+-\ln(F(x))&=\sum_{i=1}^{n}a_{i}\ln(1-x^i)\\
+&=-\sum_{i=1}^{n}a_{i}\sum_{j=1}^{\infty}\frac{x^{ij}}{j}\\
+\ln(F(x))&=\sum_{i=1}^{n}\sum_{d\mid i}\frac{da_{d}}{i}x^{i}\\
+&=\sum_{i=1}^{n}(\sum_{d\mid i}da_d)\frac{x^i}{i}\\
+\end{align}
+$$
+$$
+\begin{align}
+f(n)&=\sum_{d\mid n}g(d)\\
+g(n)&=\sum_{d\mid n}\mu(\frac{n}{d})f(d)\\
+&=\sum_{d\mid n}\mu(\frac{n}{d})\sum_{t\mid d}g(t)\\
+&=\sum_{t=1}^{n}g(t)\sum_{d}[t\mid d\mid n]\mu(\frac{n}{d})\\
+&=\sum_{t\mid n}g(t)\sum_{d\mid n}[\frac{d}{t}\mid \frac{n}{t}]\mu(\frac{n}{d})\\
+&=\sum_{t\mid n}g(t)[\frac{n}{t}=1]\\
+\\(1.2)(2.9)(3.2)
+\end{align}
+$$
+$$f(i)=\sum_{d\mid i}da_{d}$$
+$$da_{d}=\sum_{k\mid d}\mu(\frac{d}{k})f(k)$$
+设每种颜色的的小球的个数为$a_{i}$个
+$$
+\begin{align}
+tot&=\sum_{i=1}^{n}\lfloor\frac{a_{i}}{2}\rfloor\\
+\end{align}
+$$
+设有$k$个奇数，$k\equiv n\bmod 2$
+至多有$D$个奇数，那么至少有$\frac{n-D}{2}$对
+当$m\le\frac{n-D}{2}$时，答案为$D^n$
+当$m>\frac{n}{2}$时，答案为$0$
+考虑到时排列问题
+只选奇数的生成函数
+$$\sum_{i=0}^{\infty}\frac{x^{2x+1}}{(2i+1)!}=\frac{e^{x}-e^{-x}}{2}$$
+设$f(k)$表示恰好为$k$个奇数的方案数，令$g(k)$为钦定$k$个为奇数的方案数
+$$
+\begin{align}
+g(k)&=[x^n]n!\binom{D}{k}(\frac{e^x-e^{-x}}{2})^{k}e^{(D-k)x}\\
+&=[x^n]n!\frac{D!}{k!(D-k)!}\sum_{i=0}^{k}\frac{k!}{i!(k-i)!}(\frac{e^x}{2})^{i}(-\frac{e^{-x}}{2})^{k-i}e^{(D-k)x}\\
+&=[x^n]n!\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{k-i}}{i!(k-i)!}e^{xi-x(k-i)+(D-k)x}\\
+&=[x^n]n!\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{k-i}}{i!(k-i)!}e^{(D+2i-2k)x}\\
+e^{ax}&=\sum_{i=0}\frac{(ax)^{i}}{i!}\\
+&=[x^n]n!\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{k-i}}{i!(k-i)!}\sum_{j=0}\frac{((D+2i-2k)x)^j}{j!}\\
+&=\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{k-i}(D+2i-2k)^n}{i!(k-i)!}\\
+&=\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{k-i}(D-2(k-i))^n}{i!(k-i)!}\\
+&=\frac{D!}{(D-k)!2^k}\sum_{i=0}^{k}\frac{(-1)^{i}(D-2i)^n}{i!(k-i)!}\\
+\end{align}
+$$
+最后是通过二项式反演求出$f$
+$$g(n)=\sum_{i=1}^{n}\binom{n}{i}f(i)$$
+$$
+\begin{align}
+f(i)&=\sum_{j=i}^{n}(-1)^{j-i}\binom{j}{i}g(j)\\
+&=\sum_{j=i}^{n}(-1)^{j-i}\frac{j!}{i!(j-i!)}g(j)\\
+f(i)&=\frac{1}{i!}\sum_{j=i}^{n}\frac{(-1)^{j-i}}{(j-i)!}j!g(j)\\
+f(i)&=\frac{(-1)^i}{i!}\sum_{j=i}^{n}\frac{(-1)^{j}}{(j-i)!}j!g(j)\\
+G_{j}&=(-1)^jj!g(j)\\
+&=\frac{(-1)^i}{i!}\sum_{j=i}^{n}\frac{1}{(j-i)!}G_j\\
+f(i)&=\frac{(-1)^i}{i!}\sum_{j=0}^{n-i}\frac{1}{j!}G_{j+i}\\
+f(n-i)&=\frac{(-1)^i}{i!}\sum_{j=0}^{n-i}\frac{1}{j!}G_{n-i-j}\\
+\end{align}
+$$
+设目标串长度为$n$，记$f(n,i)$为长度为$n$的串，没有结束，后缀匹配到第$i$位的概率
+$$f(n,i)=\frac{1}{n}f(n-1,i-1)$$
+$$f(n,0)=\frac{n-1}{n}\sum_{i=0}^{m-1}f(n-1,i)$$
+考虑下具体数学中的做法
+假设只有$H,T$,出现$TT$就停止
+$$S=H+T+HH+HT+TH+HHH+HHT+HTH+THH+THT+\dots$$
+$$ST=A+N$$
+$$SH=B$$
+$$S=A+B+H+T$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
