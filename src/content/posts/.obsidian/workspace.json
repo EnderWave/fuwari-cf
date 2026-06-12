@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "374631287eb41571",
+        "id": "cc38239f7df40971",
         "type": "tabs",
         "children": [
           {
-            "id": "c07277e2e75a3c98",
+            "id": "28ff2f4687a2b57f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "工科数学分析-4.2.md",
+                "file": "多项式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "工科数学分析-4.2"
+              "title": "多项式"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Math.md",
+                "file": "组合数学.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Math"
+              "title": "组合数学 的反向链接列表"
             }
           },
           {
@@ -150,6 +150,20 @@
               "icon": "lucide-list",
               "title": "Outline of Math"
             }
+          },
+          {
+            "id": "de37bfa7e6b31b50",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
           }
         ]
       }
@@ -169,37 +183,40 @@
       "bases:新建数据库": false
     }
   },
-  "active": "c07277e2e75a3c98",
+  "active": "28ff2f4687a2b57f",
   "lastOpenFiles": [
-    "工科数学分析-3.23.md",
-    "工科数学分析-4.2.md",
-    "工科高等代数-3.31.md",
-    "工科数学分析-3.30.md",
+    "video.md",
     "test03.md",
-    "test01.md",
-    "工科高等代数-3.24.md",
-    "工科数学分析-3.16.md",
-    "工科数学分析-3.19.md",
-    "工科数学分析-3.26.md",
-    "组合数学.md",
-    "多项式.md",
-    "ACM模板.md",
-    "draft.md",
     "test02.md",
-    "expressive-code.md",
-    "Dynamic_Programming.md",
-    "未命名 2.base",
-    "未命名 1.base",
-    "未命名.base",
-    "Linear_Algebra.md",
+    "test01.md",
+    "String.md",
+    "Plans.md",
     "NumberTheory.md",
     "Normal_Algorithms.md",
     "Mysterious_Technology.md",
     "Math.md",
     "markdown-extended.md",
     "markdown.md",
+    "Linear_Algebra.md",
+    "Graph.md",
+    "gf.pdf",
+    "gf.md",
+    "expressive-code.md",
+    "Dynamic_Programming.md",
+    "draft.md",
+    "组合数学.md",
+    "ACM模板.md",
+    "ACM模板.pdf",
+    "工科数学分析-4.9.md",
+    "工科数学分析-4.2.md",
+    "工科数学分析-3.30.md",
     "工科高等代数-3.17.md",
-    "计算机系统导论-3.18.md",
+    "工科高等代数-3.24.md",
+    "工科高等代数-3.31.md",
+    "未命名.base",
+    "未命名",
+    "未命名 2.base",
+    "未命名 1.base",
     "Untitled 2.base",
     "Untitled 1.base",
     "Untitled.base"

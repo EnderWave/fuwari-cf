@@ -214,12 +214,46 @@ $$SH=B$$
 $$S=A+B+H+T$$
 
 
+$$
+\begin{align}
+k(a+b)&\equiv ab&(\bmod n)\\
+k^2&\equiv k^2+ab-k(a+b)&(\bmod n)\\
+k^2&\equiv (k-a)(k-b)&(\bmod n)\\
+a'b'&\equiv k^2&(\bmod n)\\
+\end{align}
+$$
+$$
+\begin{align}
+f(n,k)&=\sum_{d\mid n}[d\mid k^2]\varphi(\frac{n}{d})\\
+f(n,0)&=\\
+\sum_{k=1}^{m}
 
 
+\end{align}
+$$
+$$\sum_{k=0}^{m}\sum_{d\mid \gcd(n,k^2)}d\varphi(\frac{n}{d})$$
+互斥三角形$x$
+互斥点对$y$
+自由点$z$
+$x>0--0$
+$$
+\begin{align}\\
+[y,n-y]\\
+y=0;\\
+f(x)=\prod_{i=1}^{n}(1+w_ix)\times gx^{n'}\\
+y\neq0;\\
+g=\prod_{i=1}^{n'}(w_{i_1}+w_{i_2})\\
+\end{align}
+$$
 
-
-
-
+$$
+\begin{align}
+dp_{i,k}=dp_{i-1,k}+(i-(k-1))dp_{i-1,k-1}\\
+f_{i,i-k+1}=dp_{i,k}\\
+dp_{i-1,k-1}=f_{i-1,i-1-(k-1)-1}=f_{i-1,i-k-1};\\
+f_{i,i-k+1}=f_{i-1,i-k}+(i-k+1)f_{i-1,i-k-1};
+\end{align}
+$$
 
 
 
