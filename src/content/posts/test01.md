@@ -9,9 +9,13 @@ category: test
 draft: false
 lang: ""
 ---
-# This is a test 
-## 用于检测
+
+## This is a test
+
+### 用于检测
+
 我可以用于写点步骤
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\gcd(i,n)
@@ -22,6 +26,7 @@ $$
 &=\sum_{d\mid n}\varphi(d)\frac{n}{d}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}lcm(i,n)
@@ -42,6 +47,7 @@ $$
 &=\frac{n}{2}\sum_{d\mid n}d(\sum_{j\mid d}\mu(j)\frac{d}{j}+[d=1])\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}lcm(i,n)
@@ -55,6 +61,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}lcm(i,n)
@@ -76,6 +83,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}f(i)
@@ -85,6 +93,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{n}[\gcd(i,j)=1]
@@ -92,6 +101,7 @@ $$
 &=2\sum_{i=1}^{n}\varphi(i)-1
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}(2\gcd(i,j)-1)
@@ -102,6 +112,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}(2\gcd(i,j)-1)
@@ -112,6 +123,7 @@ $$
 &=2\sum_{d=1}^{n}d\sum_{k=1}^{\lfloor\frac{n}{d}\rfloor}\mu(k)\lfloor\frac{\lfloor\frac{n}{d}\rfloor}{k}\rfloor\lfloor\frac{\lfloor\frac{m}{d}\rfloor}{k}\rfloor-mn\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}[\gcd(i,j)=k]
@@ -121,6 +133,7 @@ $$
 &=\sum_{d=1}^{\lfloor\frac{n}{k}\rfloor}\mu(d)\lfloor\frac{\lfloor\frac{n}{k}\rfloor}{d}\rfloor\lfloor\frac{\lfloor\frac{m}{k}\rfloor}{d}\rfloor\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{n}d(i)d(j)d(\gcd(i,j))
@@ -131,8 +144,10 @@ $$
 &=\sum_{k=1}^{n}d(k)\sum_{t=1}^{\lfloor\frac{n}{k}\rfloor}\mu(t)\sum_{i=1}^{\lfloor\frac{\lfloor\frac{n}{k}\rfloor}{t}\rfloor}d(itk)\sum_{j=1}^{\lfloor\frac{\lfloor\frac{m}{k}\rfloor}{t}\rfloor}d(jtk)\\
 \end{align}
 $$
+
 上面的式子做不了，内存会爆，继续化简
 令$x=kt$
+
 $$
 \begin{align}
 &=\sum_{k=1}^{n}d(k)\sum_{x=1,k\mid x}^{n}\mu(\frac{x}{k})\sum_{i=1}^{\lfloor\frac{n}{x}\rfloor}d(ix)\sum_{j=1}^{\lfloor\frac{n}{x}\rfloor}d(jx)\\
@@ -140,16 +155,30 @@ $$
 &=\sum_{x=1}^{n}\sum_{i=1}^{\lfloor\frac{n}{x}\rfloor}d(ix)\sum_{j=1}^{\lfloor\frac{n}{x}\rfloor}d(jx)\\
 \end{align}
 $$
-$$p=mq+n$$
+
+$$
+p=mq+n
+$$
+
 $$
 \begin{align}
 \sum_{k=1}^{\frac{p-1}{2}}\lfloor\frac{kq}{p}\rfloor+\sum_{k=1}^{\frac{q-1}{2}}\lfloor\frac{kp}{q}\rfloor
 &=\sum_{k=1}^{\frac{p-1}{2}}\lfloor\frac{kq}{p}\rfloor+\sum_{k=1}^{\frac{q-1}{2}}\lfloor\frac{kp}{q}\rfloor
 \end{align}
 $$
-$$ i\le\frac{kq}{p}<i+1 $$
-$$ ip\le kq<ip+p $$
-$$ \frac{ip}{q}\le k<\frac{ip+p}{q} $$
+
+$$
+i\le\frac{kq}{p}<i+1
+$$
+
+$$
+ip\le kq<ip+p
+$$
+
+$$
+\frac{ip}{q}\le k<\frac{ip+p}{q}
+$$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}(n\bmod i)\times(m\bmod j)
@@ -160,6 +189,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(n\bmod i)(m\bmod i)
@@ -168,6 +198,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{k\in P}\sum_{i=1}^{n}\sum_{j=1}^{m}[\gcd(i,j)=k]
@@ -176,6 +207,7 @@ $$
 &=\sum_{T=1}^{n}\lfloor\frac{n}{T}\rfloor\lfloor\frac{m}{T}\rfloor\sum_{k\in P,k\mid T}\mu(\frac{T}{k})\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}d(ij)
@@ -187,7 +219,9 @@ $$
 &=\sum_{k=1}^{n}d(k^{2})f(\lfloor\frac{n}{k}\rfloor,\lfloor\frac{m}{k}\rfloor)\\
 \end{align}
 $$
+
 令$x=kt$
+
 $$
 \begin{align}
 &=\sum_{k=1}^{n}d(k)\sum_{x=1,k\mid x}^{n}\mu(\frac{x}{k})\sum_{i=1}^{\lfloor\frac{n}{x}\rfloor}d(ix)\sum_{j=1}^{\lfloor\frac{n}{x}\rfloor}d(jx)\\
@@ -195,16 +229,30 @@ $$
 &=\sum_{x=1}^{n}\sum_{i=1}^{\lfloor\frac{n}{x}\rfloor}d(ix)\sum_{j=1}^{\lfloor\frac{n}{x}\rfloor}d(jx)\\
 \end{align}
 $$
-$$p=mq+n$$
+
+$$
+p=mq+n
+$$
+
 $$
 \begin{align}
 \sum_{k=1}^{\frac{p-1}{2}}\lfloor\frac{kq}{p}\rfloor+\sum_{k=1}^{\frac{q-1}{2}}\lfloor\frac{kp}{q}\rfloor
 &=\sum_{k=1}^{\frac{p-1}{2}}\lfloor\frac{kq}{p}\rfloor+\sum_{k=1}^{\frac{q-1}{2}}\lfloor\frac{kp}{q}\rfloor
 \end{align}
 $$
-$$ i\le\frac{kq}{p}<i+1 $$
-$$ ip\le kq<ip+p $$
-$$ \frac{ip}{q}\le k<\frac{ip+p}{q} $$
+
+$$
+i\le\frac{kq}{p}<i+1
+$$
+
+$$
+ip\le kq<ip+p
+$$
+
+$$
+\frac{ip}{q}\le k<\frac{ip+p}{q}
+$$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}(n\bmod i)\times(m\bmod j)
@@ -215,6 +263,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(n\bmod i)(m\bmod i)
@@ -223,6 +272,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{k\in P}\sum_{i=1}^{n}\sum_{j=1}^{m}[\gcd(i,j)=k]
@@ -231,6 +281,7 @@ $$
 &=\sum_{T=1}^{n}\lfloor\frac{n}{T}\rfloor\lfloor\frac{m}{T}\rfloor\sum_{k\in P,k\mid T}\mu(\frac{T}{k})\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{m}d(ij)
@@ -242,6 +293,7 @@ $$
 
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{n}lcm(A_{i},A_{j})
@@ -250,7 +302,9 @@ $$
 &=2\sum_{i=1}^{n}A_{i}\sum_{j=1}^{i-1}\frac{A_{j}}{\gcd(A_{i},A_{j})}-\sum_{i=1}^{n}A_{i}\\
 \end{align}
 $$
+
 好神秘的做法，加一个出现次数就好做了
+
 $$
 \begin{align}
 \sum_{i=1}^{N}\sum_{j=1}^{N}lcm(A_{i},A_{j})
@@ -263,6 +317,7 @@ $$
 &=\sum_{Q=1}^{n}Q\sum_{d\mid Q}d\mu(d)(\sum_{i=1}^{\lfloor\frac{n}{Q}\rfloor}is_{iQ})^{2}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{n}\prod_{j=1}^{n}\frac{lcm(i,j)}{\gcd(i,j)}
@@ -272,12 +327,14 @@ $$
 &=(n!)^{2n-2}(\prod_{i=1}^{n}\prod_{j=1}^{i-1}\frac{1}{\gcd(i,j)})^{4}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{n}\prod_{j=1}^{i-1}\frac{1}{\gcd(i,j)}
 &=\prod_{d=1}^{n}\frac{1}{d^{f(d)}}
 \end{align}
 $$
+
 $$
 \begin{align}
 f(d)
@@ -287,10 +344,13 @@ f(d)
 &=2\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}\varphi(i)-1\\
 \end{align}
 $$
+
 杜教筛
+
 $$
 id=1*\varphi
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(1*\varphi)(i)
@@ -308,14 +368,17 @@ $$
 &=\frac{n(n+1)}{2}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 S(n)=\frac{n(n+1)}{2}-\sum_{d=2}^{n}S(\lfloor\frac{n}{d}\rfloor)
 \end{align}
 $$
+
 $$
 \varepsilon=1*\mu
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(1*\mu)(i)
@@ -323,11 +386,13 @@ $$
 &=\sum_{d=1}^{n}\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}\mu(i)\\
 \end{align}
 $$
+
 $$
 \begin{align}
 S(n)=1-\sum_{d=2}^{n}S(\lfloor\frac{n}{d}\rfloor)
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}\sum_{j=1}^{n}ij\gcd(i,j)
@@ -342,9 +407,11 @@ $$
 &=\sum_{Q=1}^{n}s(\lfloor\frac{n}{Q}\rfloor)f(Q)
 \end{align}
 $$
-$$ 
+
+$$
 S(n)=\sum_{i=1}^{n}f(i)=\sum_{i=1}^{n}i^{2}\varphi(i)
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(g*f)(i)
@@ -354,6 +421,7 @@ $$
 &=\sum_{i=1}^{n}i^{3}
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}(g*f)(i)
@@ -362,38 +430,48 @@ $$
 &=\sum_{d=1}^{n}g(d)S(\lfloor\frac{n}{d}\rfloor)\\
 \end{align}
 $$
+
 $$
 \begin{align}
 g(1)S(n)=\sum_{i=1}^{n}i^{3}-\sum_{d=2}^{n}g(d)S(\lfloor\frac{n}{d}\rfloor)
 \end{align}
 $$
+
 $$
 \frac{a}{b}<\frac{p}{q}<\frac{c}{d}
 $$
+
 $$
 \frac{aq}{b}<p<\frac{cq}{d}
 $$
+
 $$
 \lfloor\frac{aq}{b}\rfloor+1\le p\le \lceil\frac{cq}{d}\rceil
 $$
+
 $$
 \lfloor\frac{aq}{b}\rfloor\le p-1\le \lfloor\frac{cq-1}{d}\rfloor
 $$
+
 $$
 ax+by\le c
 $$
+
 $$
 ax\le c-by
 $$
+
 $$
 x\le\lfloor\frac{-by+c}{a}\rfloor
 $$
+
 $$
 \begin{align}
 \sum_{i=0}^{\lfloor\frac{c}{b}\rfloor}\lfloor\frac{-bi+c}{a}\rfloor
 &=\sum_{i=0}^{n}\lfloor\frac{-(a\lfloor\frac{b}{a}\rfloor+b\bmod a)i+c}{a}\rfloor
 \end{align}
 $$
+
 $$
 \begin{align}
 \sum_{i=0}^{\lfloor\frac{c}{b}\rfloor}\lfloor\frac{-bi+c}{a}\rfloor
@@ -406,6 +484,7 @@ $$
 &=n+f'(-a,c-a+1,b,m)
 \end{align}
 $$
+
 $$
 \begin{align}
 &\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{k=1}^{p}\gcd(ij,ik,jk)\gcd(i,j,k)(\frac{\gcd(i,j)}{\gcd(i,k)\gcd(j,k)}+\frac{\gcd(i,k)}{\gcd(i,j)\gcd(j,k)}+\frac{gcd(j,k)}{\gcd(i,j)\gcd(i,k)})\\
@@ -416,9 +495,11 @@ $$
 &=\sum_{d=1}^{n}d^{2}\sum_{y=1}^{\lfloor\frac{n}{d}\rfloor}\mu(y)\sum_{t=1}^{\lfloor\frac{n}{dy}\rfloor}\sum_{x=1}^{\lfloor\frac{n}{dty}\rfloor}\mu(x)\sum_{i=1}^{\lfloor\frac{n}{dtxy}\rfloor}\sum_{j=1}^{\lfloor\frac{m}{dtxy}\rfloor}\sum_{k=1}^{\lfloor\frac{p}{dy}\rfloor}(\gcd(ix,k)^{2}+\gcd(jx,k)^{2}+t^{2})\\
 \end{align}
 $$
+
 $$
 min\{i+j,i+k,i+j\}+min\{i,j,k\}=min\{i,j\}+min\{i,k\}+min\{j,k\}
 $$
+
 $$
 i+j +i=i + i + j
 $$
@@ -430,6 +511,7 @@ $$
 &=\sum_{i=1}^{n}\sum_{j=1}^{m}\sum_{k=1}^{p}(\gcd(i,j)^{2}+\gcd(j,k)^{2}+\gcd(i,k)^{2})\\
 \end{align}
 $$
+
 $$
 \begin{align}
 f(n,m,p)
@@ -441,17 +523,20 @@ f(n,m,p)
 \end{align}
 
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{lcm(i,j)}{\gcd(i,k)})
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}lcm(i,j)
 &=(\prod_{i=1}^{A}\prod_{j=1}^{B}lcm(i,j))^{C}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}lcm(i,j)
@@ -461,6 +546,7 @@ $$
 &=(B!)^{A}(A!)^{B}(\prod_{d=1}^{A}\frac{1}{d^{f(d)}})\\
 \end{align}
 $$
+
 $$
 \begin{align}
 f(d)
@@ -477,26 +563,31 @@ $$
 &=(\prod_{i=1}^{A}\prod_{k=1}^{C}\gcd(i,k))^{B}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{k=1}^{C}\gcd(i,k)
 &=\prod_{i=1}^{A}d^{f(d)}
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{lcm(i,j)}{\gcd(i,k)})^{ijk}
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}lcm(i,j)^{ijk}
 &=(\prod_{i=1}^{A}\prod_{j=1}^{B}lcm(i,j)^{ij})^{\frac{C(C+1)}{2}}
 \end{align}
 $$
+
 $$
 h(n)=\prod_{i=1}^{n}i^{i}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}lcm(i,j)^{ij}
@@ -506,6 +597,7 @@ $$
 &=h(A)^{\frac{B(B+1)}{2}}h(B)^{\frac{A(A+1)}{2}}\prod_{i=1}^{A}\prod_{j=1}^{B}(\frac{1}{\gcd(i,j)})^{ij}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 g(d)=\sum_{i=1}^{n}\sum_{j=1}^{m}ij[\gcd(i,j)=d]
@@ -513,23 +605,27 @@ g(d)=\sum_{i=1}^{n}\sum_{j=1}^{m}ij[\gcd(i,j)=d]
 &=d^{2}\sum_{k=1}^{\lfloor\frac{n}{d}\rfloor}\mu(k)k^{2}\sum_{i=1}^{\lfloor\frac{n}{dk}\rfloor}i\sum_{j=1}^{\lfloor\frac{m}{dk}\rfloor}j\\
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{lcm(i,j)}{\gcd(i,k)})^{\gcd(i,j,k)}
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{ij}{\gcd(i,j)})^{\gcd(i,j,k)}
 &=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(ij)^{\gcd(i,j,k)}\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{1}{\gcd(i,j)})^{\gcd(i,j,k)}
 \end{align}
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{\gcd(i,j,k)}
 &=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{\gcd(i,j,k)}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 F(i)=\sum_{j=1}^{B}\sum_{k=1}^{C}\gcd(i,j,k)
@@ -537,21 +633,26 @@ F(i)=\sum_{j=1}^{B}\sum_{k=1}^{C}\gcd(i,j,k)
 &=\sum_{d\mid i}d\sum_{t=1}^{\lfloor\frac{B}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{B}{dt}\rfloor}\sum_{k=1}^{\lfloor\frac{C}{dt}\rfloor}[\gcd(i/d,t)=1][\gcd(j,k)=1]\\
 \end{align}
 $$
+
 $$
 G(d)=\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{m}{d}\rfloor}[\gcd(i,j)=1]\sum_{k=1}^{p}\gcd(d,k)
 $$
+
 $$
 \begin{align}
 \prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{lcm(i,j)}{\gcd(i,k)})^{f(type)}
 &=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}(\frac{ij}{\gcd(i,j)\gcd(i,k)})^{f(type)}
 \end{align}
 $$
+
 $$
 F(A,type)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{f(type)}
 $$
+
 $$
 G(A,B,type)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)^{f(type)}
 $$
+
 $$
 \begin{align}
 F(A,0)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i
@@ -559,6 +660,7 @@ F(A,0)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i
 &=(A!)^{BC}
 \end{align}
 $$
+
 $$
 \begin{align}
 G(A,B,0)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)
@@ -573,6 +675,7 @@ G(A,B,0)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)
 }d^{\mu(\frac{T}{d})})^{\lfloor\frac{A}{T}\rfloor\lfloor\frac{B}{T}\rfloor})^{C}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 F(A,1)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{ijk}
@@ -582,6 +685,7 @@ F(A,1)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{ijk}
 &=(\prod_{i=1}^{A}i^i)^{S_{1}(B)S_{2}(C)}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 G(A,B,1)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)^{ijk}
@@ -594,6 +698,7 @@ G(A,B,1)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)^{ijk}
 &=(\prod_{T=1}^{A}(\prod_{d\mid T}d^{\mu(\frac{T}{d})T^{2}})^{S_{1}(\lfloor\frac{A}{T}\rfloor)S_{1}(\lfloor\frac{B}{T}\rfloor})^{S_{1}(C)}\\
 \end{align}
 $$
+
 $$
 \begin{align}
 F(A,2)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}i^{\gcd(i,j,k)}
@@ -621,7 +726,9 @@ G(A,B,2)=\prod_{i=1}^{A}\prod_{j=1}^{B}\prod_{k=1}^{C}\gcd(i,j)^{\gcd(i,j,k)}
 \prod_{h=1}^{A}\prod_{g=1}^{A}\prod_{t=1}^{A/g}\prod_{d=1}^{A/tg}(g)^{\mu(h)\mu(t)d\lfloor\frac{C}{dt}\rfloor\lfloor\frac{A}{dtgh}\rfloor\lfloor\frac{B}{dtgh}\rfloor}\\
 \end{align}
 $$
+
 把后面那一坨拿出来
+
 $$
 \begin{align}
 \prod_{h=1}^{A}\prod_{g=1}^{A/h}\prod_{t=1}^{A/gh}\prod_{d=1}^{A/tgh}(g)^{\mu(h)\mu(t)d\lfloor\frac{C}{dt}\rfloor\lfloor\frac{A}{dtgh}\rfloor\lfloor\frac{B}{dtgh}\rfloor}
@@ -633,16 +740,23 @@ $$
 &=\prod_{T=1}^{C}(\prod_{Q=1}^{A/T}(\prod_{g\mid Q}g^{\mu(\frac{Q}{g})})^{\lfloor\frac{A/T}{Q}\rfloor\lfloor\frac{B/T}{Q}\rfloor})^{\varphi(T)\lfloor\frac{C}{T}\rfloor}\\
 \end{align}
 $$
+
 $$
 \lfloor d\sqrt r\rfloor=\lfloor d\frac{p}{q}\rfloor
 $$
+
 $$
 (-1)^{k}=1-2(k\bmod2)=1-2(k-2\lfloor\frac{k}{2}\rfloor)=1-2k+4\lfloor\frac{k}{2}\rfloor
 $$
+
 $$
 f(a,b,c,n)=\sum_{i=1}^{n}\lfloor\frac{a\sqrt r+b}{c}i\rfloor
 $$
-$$ t=\frac{a\sqrt r+b}{c} $$
+
+$$
+t=\frac{a\sqrt r+b}{c}
+$$
+
 $$
 \begin{align}
 f(a,b,c,n)
@@ -653,7 +767,9 @@ f(a,b,c,n)
 &=\lfloor t\rfloor\frac{n(n+1)}{2}+f(a,b-c\lfloor t\rfloor,c,n)
 \end{align}
 $$
+
 小于1
+
 $$
 \begin{align}
 f(a,b,c,n)
@@ -673,28 +789,39 @@ $$
 $$
 n=\prod_{i=1}^{s}p_{i}^{e_{i}}
 $$
+
 $$
 n=p=1\times p--->0
-$$  
+$$
+
 令$f(n)$表示$n$被拆成互不相同的数之和的方案数  
 $f(1)=0,f(2)=0,f(3)=1,f(4)=1,f(5)=2,f(6)=3,f(7)=4$  
 $7=1+6=2+5=3+4=1+2+4$  
+
 $$
 C_{i}+xP_{i}=C_{j}+xP_{j}+yM
 $$
-$$ 
+
+$$
 (P_{i}-P_{j})x-My=C_{j}-C{i}
 $$
+
 检查是否有非负整数解  
+
 $$
 ax+by=c,x=x_{0}+b,y=y_{0}-a
 $$
+
 $$
 ax\equiv c(\bmod b)
-$$  这里有问题  
+$$
+
+这里有问题
+
 $$
 n=2^{e_{2}}5^{e_{5}}t,f(n,N)=\lfloor\frac{N}{t}\rfloor
 $$
+
 $$
 \begin{align}
 \sum_{i=1}^{n}f(n)
@@ -702,39 +829,49 @@ $$
 &=\sum_{e_{2}=0}\sum_{e_{5}=0}(F(m)-F(m/2)-F(m/5)+F(m/10))\\
 \end{align}
 $$
-$$ 
+
+$$
 F(n)=\sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor
 $$
+
 换一种更直接的枚举方式  
+
 $$
 \begin{align}
 \sum_{i=1}^{n}f(n)
 &=\sum_{t=1}^{n}\lfloor\frac{n}{t}\rfloor\times G(\lfloor\frac{n}{t}\rfloor)
 \end{align}
 $$
+
 连续一段求和时，注意$t$既不是2的倍数，也不是5的倍数  
 
 $$
 \binom{n}{k}\bmod 2=\nu_{2}(n!)-\nu_{2}(k!)-\nu_{2}((n-k)!)=0?1:0
 $$
+
 $$
 \begin{align}
 \prod_{i=l}^{r}lcm(a_{i},x)
 &=(\prod_{i=l}^{r}a_{i}x)\times(\prod_{i=l}^{r}\gcd(a_{i},x))^{-1}
 \end{align}
 $$
+
 $$
 x=\prod_{i=1}^{s}p_{i}^{e_{i}}
 $$
+
 $$
 i->2i(\bmod n+1)
 $$
+
 $$
 i\times 2^{M}\equiv L(\bmod n+1)
 $$
+
 $$
 i\equiv L\times (2^{-1})^{M}\equiv L\times(\frac{n+2}{2})^{M}(\bmod n+1)
 $$
+
 $$
 g^{\sum_{i\mid s}\binom{s}{i}}
 $$

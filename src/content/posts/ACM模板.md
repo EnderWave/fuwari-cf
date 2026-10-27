@@ -7,7 +7,8 @@ category: 模板
 draft: true
 ---
 
-# 多项式部分
+## 多项式部分
+
 ```cpp
 #define N 3000050  
 #define mod 998244353  
@@ -145,7 +146,9 @@ namespace Poly {
 }  
 using namespace Poly;
 ```
-# 数论部分
+
+## 数论部分
+
 ```cpp
 //埃筛
 int vis[N],pri[N],cnt;
@@ -307,7 +310,9 @@ ll Lucas(ll n,ll m){
 }
 
 ```
-# 线性代数部分
+
+## 线性代数部分
+
 ```cpp
 //线性基
 bool insert(int x){
@@ -352,7 +357,9 @@ int qry_rk(int x){
     return ans;
 }
 ```
-# 图论部分
+
+## 图论部分
+
 ```cpp
 //数剖
 struct edge{
@@ -933,7 +940,9 @@ int main(){
 
 
 ```
-# 字符串部分
+
+## 字符串部分
+
 ```cpp
 //KMP
 void pre(string s){
@@ -1106,7 +1115,9 @@ int main(){
 }
 
 ```
-# 数据结构部分
+
+## 数据结构部分
+
 ```cpp
 
 for(int j=1;j<=logn;j++)
@@ -1603,53 +1614,8 @@ int merge(int u,int v,int l,int r){
 
 ```
 
+## STL部分
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# STL部分
 ```cpp
 
 
@@ -1697,4 +1663,3 @@ insert 函数的返回值类型为 `pair<iterator, bool>`，其中 iterator 是�
 `replace(pos,count,str)` 和 `replace(first,last,str)` 是比较常见的替换函数．它们分别表示将从 `pos` 位置开始 `count` 个字符的子串替换为 `str` 以及将以 `first` 开始（含）、`last` 结束（不含）的子串替换为 `str`，其中 `first` 和 `last` 均为迭代器．
 
 ```
-

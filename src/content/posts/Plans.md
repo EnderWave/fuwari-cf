@@ -15,4 +15,3 @@ $CF$
 $AtCoder$
  [432F](https://atcoder.jp/contests/abc432/tasks/abc432_f)
  [432G](https://atcoder.jp/contests/abc432/tasks/abc432_g)
- 

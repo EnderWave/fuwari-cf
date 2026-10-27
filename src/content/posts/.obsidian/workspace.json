@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "cc38239f7df40971",
+        "id": "58662ea4107abc81",
         "type": "tabs",
         "children": [
           {
-            "id": "28ff2f4687a2b57f",
+            "id": "45c34fbfcab949a6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "计算机系统导论-1.md",
+                "file": "补充.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计算机系统导论-1"
+              "title": "补充"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -183,42 +185,44 @@
       "bases:新建数据库": false
     }
   },
-  "active": "28ff2f4687a2b57f",
+  "active": "45c34fbfcab949a6",
   "lastOpenFiles": [
-    "计算机系统导论（.md",
-    "计算机系统导论-1.md",
-    "工科数学分析-第五章.md",
-    "工科数学分析-第七章.md",
-    "draft.md",
+    "补充.pdf",
+    "Dynamic_Programming.md",
+    "新模板.md",
+    "数论.md",
+    "未命名.canvas",
+    "计算几何.md",
+    "具身入门.md",
+    "补充.md",
     "高等代数ex.md",
     "高等代数下.md",
     "多项式.md",
-    "video.md",
-    "test03.md",
-    "test02.md",
-    "test01.md",
-    "String.md",
-    "Plans.md",
-    "NumberTheory.md",
-    "Normal_Algorithms.md",
-    "Mysterious_Technology.md",
-    "Math.md",
-    "markdown-extended.md",
-    "markdown.md",
+    "工科高等代数-3.17.md",
     "Linear_Algebra.md",
-    "Graph.md",
-    "gf.pdf",
-    "gf.md",
-    "expressive-code.md",
-    "Dynamic_Programming.md",
-    "组合数学.md",
+    "markdown-extended.md",
+    "Mysterious_Technology.md",
+    "Normal_Algorithms.md",
+    "NumberTheory.md",
+    "Pasted image 20260726003340.png",
+    "线段树.md",
+    "draft.md",
+    "test04.md",
+    "工科数学分析-第五章.md",
+    "工科数学分析-第七章.md",
+    "工科数学分析-第六章.md",
+    "计算几何.pdf",
+    "test03.md",
     "ACM模板.pdf",
+    "组合数学.md",
+    "新模板.pdf",
+    "test01.md",
+    "test02.md",
+    "gf.pdf",
     "未命名.base",
     "未命名",
     "未命名 2.base",
     "未命名 1.base",
-    "Untitled 2.base",
-    "Untitled 1.base",
-    "Untitled.base"
+    "Untitled 2.base"
   ]
 }

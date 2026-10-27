@@ -7,9 +7,14 @@ category: test
 draft: false
 ---
 
-$$f(x)=\sum_{i=0}^{n}a_{i}x^{i}$$
+$$
+f(x)=\sum_{i=0}^{n}a_{i}x^{i}
+$$
 
-$$ f(x)=\sum_{i=0}^{n}f(i)\prod_{j=0,j\le n,j\neq i}\frac{x-j}{i-j}$$
+$$
+f(x)=\sum_{i=0}^{n}f(i)\prod_{j=0,j\le n,j\neq i}\frac{x-j}{i-j}
+$$
+
 $$
 \begin{aligned}
 f(x+m)&=\sum_{i=0}^{n}f(i)\prod_{j=0,j\le n,j\neq i}\frac{x+m-j}{i-j}\\
@@ -34,7 +39,9 @@ g(x)&=\frac{1}{1-x}\\
 \end{align}
 $$
 
-$$ \binom{k}{i}=\frac{k!}{i!(k-i)!}=\frac{k(k-1)...(k-i+1)}{i!}\equiv\frac{k'(k'-1)...(k'-i+1)}{i!}=\frac{k'!}{i!(k'-i)!}\equiv\binom{k'}{i}$$
+$$
+\binom{k}{i}=\frac{k!}{i!(k-i)!}=\frac{k(k-1)...(k-i+1)}{i!}\equiv\frac{k'(k'-1)...(k'-i+1)}{i!}=\frac{k'!}{i!(k'-i)!}\equiv\binom{k'}{i}
+$$
 
 $$
 \begin{align}
@@ -43,9 +50,11 @@ g(x)&=-x+1\\
 f(x)&=a_{0}+a_{1}x+a_{2}x^{2}\\
 \end{align}
 $$
+
 $$
 f(x)=\sum_{i=0}^{n}
 $$
+
 $$
 \begin{align}
 \ln\frac{1}{1-x^{V}}&=-\ln(1-x^{V})\\
@@ -55,10 +64,15 @@ $$
 
 \end{align}
 $$
-$$Bell\_Number$$
+
+$$
+Bell\_Number
+$$
+
 $$
 B_{n+1}=\sum_{i=0}^{n}\binom{n}{i}B_{i}
 $$
+
 $$
 \begin{align}
 F(x)&=\sum_{i=0}\frac{B_{i}}{i!}x^{i}\\
@@ -70,6 +84,7 @@ F(x)&=e^{e^{x}+c}\\
 F(x)&=e^{e^{x}-1}
 \end{align}
 $$
+
 $$
 \begin{align}
 1011 1001 0111 1010
@@ -83,7 +98,9 @@ $$
 
 \end{align}
 $$
+
 $f_{i}$表示$i$个点联通的方案数,$g_{i}$表示任意一图
+
 $$
 \begin{align}
 g_{n}&=2^{\binom{n}{2}}\\
@@ -94,7 +111,9 @@ G'(x)&=F'(x)G(x)\\
 F'(x)&=\frac{G'(x)}{G(x)}\\
 F(x)&=\ln G(x)+c\\
 \end{align}
-$$$$
+$$
+
+$$
 \begin{align}
 \sum_{S\subset T}\mu(\prod_{i\in S}i)\varphi(\prod_{i\in S}i)&=0&,k=0\\
 \sum_{S\subset T}\mu(\prod_{i\in S}i)\varphi(\prod_{i\in S}i)&=\sum_{S\subset T}(-1)^{|S|}\prod_{i\in S}(i-1)&,k=1\\

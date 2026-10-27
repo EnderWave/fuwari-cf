@@ -95,7 +95,7 @@ Notice again how text always lines up on 4-space indents (including
 that last line which continues item 3 above).
 
 Here's a link to [a website](http://foo.bar), to a [local
-doc](local-doc.html), and to a [section heading in the current
+doc](/posts/guide/), and to a [section heading in the current
 doc](#an-h2-header). Here's a footnote [^1].
 
 [^1]: Footnote text goes here.
@@ -160,7 +160,9 @@ and images can be specified like so:
 Inline math equations go in like so: $\omega = d\phi / dt$. Display
 math should get its own line and be put in in double-dollarsigns:
 
-$$I = \int \rho R^{2} dV$$
+$$
+I = \int \rho R^{2} dV
+$$
 
 $$
 \begin{equation*}

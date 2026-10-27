@@ -8,10 +8,11 @@ category: ""
 draft: true
 lang: ""
 ---
-# 树链剖分（重链剖分）
 
+## 树链剖分（重链剖分）
 
-# Tarjan
+## Tarjan
+
 **求SCC的Tarjan**
 
-# 2-SAT
+## 2-SAT
