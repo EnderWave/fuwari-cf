@@ -1,13 +1,18 @@
 ---
-title: 高等代数ex
+title: "高等代数 · 专题例题与证明"
 published: 2026-06-12
 tags:
   - 高等代数
   - 数学，线性代数
   - 数学
-category: 工高代
+category: "高等代数"
 draft: false
+description: "围绕矩阵范数、SVD、矩阵微分、正交投影与最小二乘展开的专题证明和习题整理。"
 ---
+
+围绕矩阵范数、SVD、矩阵微分、正交投影与最小二乘展开的专题证明和习题整理。
+
+[返回课程笔记导航](/posts/课程笔记导航/)
 
 ## 专题 1：向量范数与矩阵范数 (Vector and Matrix Norms)
 

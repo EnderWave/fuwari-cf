@@ -1,13 +1,17 @@
 ---
-title: String
+title: "字符串 · 前缀函数、KMP 与 AC 自动机"
 published: 2025-11-28
-description: '字符串'
+description: "从前缀函数到单模式与多模式匹配，整理算法思路与实现。"
 image: ''
 tags: [String]
-category: 'String'
+category: "算法笔记"
 draft: false 
 lang: ''
 ---
+
+从前缀函数到单模式与多模式匹配，整理算法思路与实现。
+
+[返回算法笔记导航](/posts/算法笔记导航/)
 
 ## 字符串
 

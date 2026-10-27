@@ -1,13 +1,17 @@
 ---
-title: 数论
+title: "数论 · 定义、算法与常用结论"
 published: 2025-11-28
-description: ''
+description: "积性函数、筛法与数论算法的专题笔记，结合公式推导和 C++ 实现查阅。"
 image: ''
 tags: [数学,数论]
-category: 'Math'
+category: "算法笔记"
 draft: false 
 lang: ''
 ---
+
+积性函数、筛法与数论算法的专题笔记，结合公式推导和 C++ 实现查阅。
+
+[返回算法笔记导航](/posts/算法笔记导航/)
 
 *这一部分只考虑整数*
 

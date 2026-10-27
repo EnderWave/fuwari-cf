@@ -1,13 +1,17 @@
 ---
-title: Normal_Algorithms
+title: "基础算法 · 二分与贪心笔记"
 published: 2025-12-09
-description: '平平无奇的算法'
+description: "记录二分、贪心及相关题目的思路与实现细节。"
 image: ''
 tags: [algorithm]
-category: ''
+category: "算法笔记"
 draft: false 
 lang: ''
 ---
+
+记录二分、贪心及相关题目的思路与实现细节。
+
+[返回算法笔记导航](/posts/算法笔记导航/)
 
 ## 二分
 

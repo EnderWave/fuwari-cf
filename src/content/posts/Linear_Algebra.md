@@ -1,15 +1,19 @@
 ---
-title: 线性代数
+title: "线性基 · 插入、第 k 小与排名"
 published: 2025-11-28
-description: ""
+description: "异或线性基的插入、次序查询和排名计算，附 C++ 实现。"
 image: ""
 tags:
   - 数学
   - 线性代数
-category: 算法
+category: "算法笔记"
 draft: false
 lang: ""
 ---
+
+异或线性基的插入、次序查询和排名计算，附 C++ 实现。
+
+[返回算法笔记导航](/posts/算法笔记导航/)
 
 ## 线性代数部分
 

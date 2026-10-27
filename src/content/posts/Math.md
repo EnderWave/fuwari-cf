@@ -1,13 +1,17 @@
 ---
-title: 数学技巧
+title: "算法数学 · 调和级数与枚举复杂度"
 published: 2025-11-28
-description: ''
+description: "利用调和级数分析枚举复杂度，并结合题目记录应用。"
 image: ''
 tags: [数学,调和级数]
-category: '算法'
+category: "算法笔记"
 draft: false 
 lang: ''
 ---
+
+利用调和级数分析枚举复杂度，并结合题目记录应用。
+
+[返回算法笔记导航](/posts/算法笔记导航/)
 
 ## 调和级数
 
