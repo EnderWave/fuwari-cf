@@ -170,3 +170,12 @@ $$
 ans=&\sum_{i=1}^{m}\sqrt{(r_i-l_i+1)(s_{l_i}+...+s_{r_i})},l_1=1,r_m=n,r_i+1=l_{i+1}\\
 \end{aligned}
 $$
+$$
+\begin{aligned}
+\text{ans} &= r(-1)^{K-1}\left[\frac{x^n}{n!}\right]\frac{-(e^{rx}-1)^2}{(r+1)+(r-1)e^{2rx}} + [K=1]\left[\frac{x^n}{n!}\right]\frac{e^{2rx}-1}{(r+1)+(r-1)e^{2rx}} \\
+&= \frac{r(-1)^{K-1}}{r+1}\left[\frac{x^n}{n!}\right]\sum_{j=0}^{\infty}\left(\frac{1-r}{1+r}\right)^j \left(-e^{(2j+2)rx}+2e^{(2j+1)rx}-e^{2jrx}\right) \\
+&\quad + \frac{[K=1]}{r+1}\left[\frac{x^n}{n!}\right]\sum_{j=0}^{\infty}\left(\frac{1-r}{1+r}\right)^j \left(e^{(2j+2)rx}-e^{2jrx}\right) \\
+&= \frac{r^{n+1}(-1)^{K-1}}{r+1}\sum_{j=0}^{\infty}\left(\frac{1-r}{1+r}\right)^j \left(-(2j+2)^n + 2(2j+1)^n - (2j)^n\right) \\
+&\quad + [K=1]\frac{2r^{n+1}}{1+r}\sum_{j=0}^{\infty}\left(\frac{1-r}{1+r}\right)^j (2j+2)^n
+\end{aligned}
+$$
