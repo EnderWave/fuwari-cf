@@ -789,7 +789,9 @@ _提示：每次输出后请使用 `std::endl` 或 `fflush(stdout)` 刷新输出
 * 它们对异或和 $\text{XorSum}$ 的贡献是 $(k \bmod 2) \cdot w$；
 * 因此，该位对 $\text{Sum} - \text{XorSum}$ 的净贡献为：
 
-$$(k - (k \bmod 2)) \cdot w = 2 \left\lfloor \frac{k}{2} \right\rfloor \cdot w$$
+$$
+(k - (k \bmod 2)) \cdot w = 2 \left\lfloor \frac{k}{2} \right\rfloor \cdot w
+$$
 
 
 
@@ -849,7 +851,9 @@ $$(k - (k \bmod 2)) \cdot w = 2 \left\lfloor \frac{k}{2} \right\rfloor \cdot w$$
 
 整理得到用 $\{1, 4, 5\}$ 凑 $M$ 的极简闭式解 $f(M)$：
 
-$$f(M) = \begin{cases} \frac{M}{5} & M \equiv 0 \pmod 5 \\ 2 & M = 2 \\ 3 & M = 3 \text{ 或 } M = 7 \\ \lfloor \frac{M}{5} \rfloor + 1 & \text{其他所有情况} \end{cases}$$
+$$
+f(M) = \begin{cases} \frac{M}{5} & M \equiv 0 \pmod 5 \\ 2 & M = 2 \\ 3 & M = 3 \text{ 或 } M = 7 \\ \lfloor \frac{M}{5} \rfloor + 1 & \text{其他所有情况} \end{cases}
+$$
 
 
 
@@ -867,7 +871,9 @@ $$f(M) = \begin{cases} \frac{M}{5} & M \equiv 0 \pmod 5 \\ 2 & M = 2 \\ 3 & M = 
 食堂的结账机器采用了一套奇特的“二进制对冲”计费系统。当你拿出一叠共 $k$ 张餐券 $a_1, a_2, \dots, a_k$（其中 $a_i \in \{2, 5, 8, 10\}$）时，机器会计算这叠餐券的**面额总和**与**按位异或和**之差，并将其作为你的实际抵扣金额 $V$：
 
 
-$$V = \left(\sum_{i=1}^k a_i\right) - \left(a_1 \oplus a_2 \oplus \dots \oplus a_k\right)$$
+$$
+V = \left(\sum_{i=1}^k a_i\right) - \left(a_1 \oplus a_2 \oplus \dots \oplus a_k\right)
+$$
 
 
 其中 $\oplus$ 表示二进制按位异或（XOR）运算。例如，若你拿出三张面额分别为 $2, 8, 10$ 的餐券，它们的总和为 $2 + 8 + 10 = 20$，按位异或和为 $2 \oplus 8 \oplus 10 = 0$，因此实际抵扣金额为 $20 - 0 = 20$ 元。
@@ -999,8 +1005,12 @@ int main() {
 定义一次更新为：
 从根节点开始，设此时根节点为$u$，其子节点为$v_1,v_2,...,v_m$，且按照$val$从大到小排序。
 先更新其子节点
-$$val_{v_1}=\lfloor\frac{val_u+(val_{v_1}\bmod (val_u+(u\bmod 2)))}{2}\rfloor$$
-$$val_{v_i}=\lfloor\frac{val_{v_{i-1}}+(val_{v_i}\bmod (val_{v_{i-1}}+(v_{i-1}\bmod 2)))}{2}\rfloor$$
+$$
+val_{v_1}=\lfloor\frac{val_u+(val_{v_1}\bmod (val_u+(u\bmod 2)))}{2}\rfloor
+$$
+$$
+val_{v_i}=\lfloor\frac{val_{v_{i-1}}+(val_{v_i}\bmod (val_{v_{i-1}}+(v_{i-1}\bmod 2)))}{2}\rfloor
+$$
 注意，是用更新后的值更新排在后面的值
 输出更新$K$次后的所有权值的异或和
 $N\le 10^5,val\le 10^{18},K\le 10^7$

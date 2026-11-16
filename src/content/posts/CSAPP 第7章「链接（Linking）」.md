@@ -79,15 +79,10 @@ int sum(int *a, int n) {
   
 
 | 阶段 | 工具名称 | 输入 $\to$ 输出 | 通俗理解它在干什么 |
-
 | :--- | :--- | :--- | :--- |
-
 | **1. 预处理** | 预处理器 `cpp` | `main.c` $\to$ `main.i` | 把 `#include` 的头文件内容直接粘贴进来，把 `#define` 宏替换掉，去掉注释 |
-
 | **2. 编译** | 编译器 `cc1` | `main.i` $\to$ `main.s` | 把 C 语言翻译成人类还能勉强看懂的**汇编语言** |
-
 | **3. 汇编** | 汇编器 `as` | `main.s` $\to$ `main.o` | 把汇编指令直接翻译成机器码，打包成**半成品零件（可重定位目标文件 `.o`）** |
-
 | **4. 链接** | 链接器 `ld` | `main.o` + `sum.o` $\to$ `prog` | 把多个 `.o` 半成品零件组装起来，填好所有跨文件调用的地址，生成**成品（可执行文件）** |
 
   
@@ -143,21 +138,13 @@ Linux 用一种叫 **ELF（Executable and Linkable Format）** 的标准格式�
   
 
 | 节（格子）名称 | 里面装的是什么？ | 初学者最容易踩坑的细节 |
-
 | :--- | :--- | :--- |
-
 | **`.text`** | 已编译好的**机器指令代码** | 只读、可执行 |
-
 | **`.rodata`** | **只读数据**（Read-Only Data） | 比如 `printf("Hello\n")` 里的字符串常量、以及 `switch-case` 生成的跳转表 |
-
 | **`.data`** | **已经赋了初值**的全局变量和 `static` 变量 | 比如 `int array[2] = {1, 2};` |
-
 | **`.bss`** | **没有赋初值**（或初值为 `0`）的全局变量和 `static` 变量 | 巧记：**"Better Save Space"（省空间）**！因为初值全是 0，没必要在硬盘文件里真存几万个 0，所以在磁盘文件里**不占任何实际体积**，只记个大小，等程序运行时再去内存里开空间清零 |
-
 | **`.symtab`** | **符号表（Symbol Table，花名册）** | 记录这个文件里定义了哪些函数/全局变量，又引用了哪些外部名字。**注意：普通局部变量不在里面！** |
-
 | **`.rel.text`** | `.text` 代码里的**填空题便利贴** | 记录机器码里哪些位置留了空（比如调用外部函数 `sum`），等链接时要怎么把地址填进去 |
-
 | **`.rel.data`** | `.data` 数据里的**填空题便利贴** | 如果某个全局指针初始值指向了别处的变量（如 `int *p = &buf[0];`），这里记录需要修正的指针位置 |
 
   
@@ -235,17 +222,11 @@ void swap() {           // 4. 函数定义
   
 
 | 名字 | 会进 `.symtab` 符号表吗？ | 符号类型 | 定义在哪个模块？ | 分到哪个节（Section）？ |
-
 | :--- | :--- | :--- | :--- | :--- |
-
 | `buf` | :spoiler[会（Yes）] | :spoiler[外部符号 extern] | :spoiler[m.o] | :spoiler[在 m.o 中属于 .data（在 swap.o 符号表里标为 UND 未定义）] |
-
 | `bufp0` | :spoiler[会（Yes）] | :spoiler[全局符号 global] | :spoiler[swap.o] | :spoiler[.data（因为已经赋了初值 &buf[0]）] |
-
 | `bufp1` | :spoiler[会（Yes）] | :spoiler[全局符号 global] | :spoiler[swap.o] | :spoiler[COMMON（未初始化的全局变量，弱符号）] |
-
 | `swap` | :spoiler[会（Yes）] | :spoiler[全局符号 global] | :spoiler[swap.o] | :spoiler[.text（因为是函数代码）] |
-
 | `temp` | :spoiler[不会（No）] | :spoiler[—] | :spoiler[—] | :spoiler[—（普通局部变量在栈上，链接器完全看不见它）] |
 
   
@@ -532,13 +513,13 @@ gcc -static -o prog2c main2.o -L. -lvector # 4. 链接（-L. 表示在当前目�
 
 1. **加载时动态链接（最常见）**：编译生成可执行文件时，不把 `.so` 的代码复制进去，只记个名字。等运行 `./prog` 时，系统自动叫来动态链接器 `ld-linux.so`，把共享库映射到内存里供所有进程共享。
 
-   ```bash title="制作并使用动态库 libvector.so"
+   ```bash title="制作并使用动态库 libvector.so"
 
    gcc -shared -fpic -o libvector.so addvec.c multvec.c
 
    gcc -o prog2l main2.c ./libvector.so
 
-   ```
+   ```
 
 2. **运行时动态链接（插件机制）**：程序都已经跑起来了，在代码里临时用 `dlopen("libvector.so", RTLD_LAZY)` 打开一个 `.so` 文件，用 `dlsym(handle, "addvec")` 拿到函数指针直接调用（就像很多游戏动态加载 Mod 插件一样）。
 
@@ -561,13 +542,9 @@ gcc -static -o prog2c main2.o -L. -lvector # 4. 链接（-L. 表示在当前目�
   
 
 | 拦截阶段 | 通俗原理（怎么偷梁换柱的？） | 需要什么条件？ | 核心命令 |
-
 | :--- | :--- | :--- | :--- |
-
 | **1. 编译时打桩** | 写个假头文件 `malloc.h`，用 `#define malloc(x) mymalloc(x)` 把源码里的名字直接替换掉 | 需要拿到 `.c` 源码重新编译 | `gcc -I. -o intc int.c mymalloc.o` |
-
 | **2. 链接时打桩** | 给链接器传暗号 `--wrap,malloc`，让它把所有的 `malloc` 连到 `__wrap_malloc` 上，而把 `__real_malloc` 连到真 `malloc` 上 | 需要拿到 `.o` 文件重新链接 | `gcc -Wl,--wrap,malloc -Wl,--wrap,free -o intl int.o mymalloc.o` |
-
 | **3. 运行时打桩** | **最强大！** 用环境变量 `LD_PRELOAD="./mymalloc.so"` 让动态链接器优先加载我们的假库，在假库里用 `dlsym(RTLD_NEXT, "malloc")` 找到排在后面的真 `malloc` | **什么都不需要！** 直接对现成的可执行文件生效 | `LD_PRELOAD="./mymalloc.so" ./intr` |
 
   
