@@ -1,5 +1,5 @@
 ---
-title: CS:APP 第8章「异常控制流（ECF）」
+title: CSAPP 第8章「异常控制流（ECF）」
 published: 2026-11-16
 tags:
   - 计算机系统
@@ -10,7 +10,7 @@ tags:
   - Shell
 category: 计算机系统
 draft: false
-description: CS:APP 第8章：四种硬件异常、fork/execve/waitpid 进程控制、僵尸进程、信号防丢与防死锁准则、竞态消除及 100 行实现迷你 Shell。
+description: 四种硬件异常、fork/execve/waitpid 进程控制、僵尸进程、信号防丢与防死锁准则、竞态消除及 100 行实现迷你 Shell。
 ---
 刚开始学《计算机系统》第8章时，很多人会被“异常控制流（ECF）”、“同步/异步异常”、“上下文切换”、“信号掩码与竞态”、“非本地跳转”这一连串黑话劝退。
 

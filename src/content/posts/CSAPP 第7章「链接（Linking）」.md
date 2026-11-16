@@ -1,5 +1,5 @@
 ---
-title: CS:APP 第7章「链接（Linking）」
+title: CSAPP 第7章「链接（Linking）」
 published: 2026-11-16
 tags:
   - 计算机系统
@@ -8,7 +8,7 @@ tags:
   - C语言
 category: 计算机系统
 draft: false
-description: " CS:APP 第7章链接机制：为什么需要链接器？ELF 文件里装了什么？强弱符号怎么避坑？重定位地址怎么算？静态库、动态库与库打桩到底是怎么工作的？"
+description: 为什么需要链接器？ELF 文件里装了什么？强弱符号怎么避坑？重定位地址怎么算？静态库、动态库与库打桩到底是怎么工作的？
 ---
 刚开始学 C 语言时，我们写完代码敲一行 `gcc main.c sum.c -o prog`，可执行文件就神奇地出现了。但你有没有想过这样一个问题：
 
