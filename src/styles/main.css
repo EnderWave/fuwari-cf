@@ -141,6 +141,16 @@
     height: var(--collapsedHeight);
 }
 
+.custom-md .answer-spoiler {
+  @apply my-4 rounded-md border border-black/10 dark:border-white/10 px-4 py-3;
+  > summary {
+    @apply cursor-pointer font-medium;
+  }
+  &[open] > summary {
+    @apply mb-3;
+  }
+}
+
 .custom-md spoiler {
   @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
 

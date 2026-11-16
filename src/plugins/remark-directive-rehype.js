@@ -4,6 +4,21 @@ import { visit } from "unist-util-visit";
 export function parseDirectiveNode() {
 	return (tree, { _data }) => {
 		visit(tree, (node) => {
+			if (node.type === "containerDirective" && node.name === "spoiler") {
+				const label = node.children[0]?.data?.directiveLabel
+					? node.children.shift()
+					: {
+							type: "paragraph",
+							children: [{ type: "text", value: "答案与解析" }],
+						};
+				label.data = { hName: "summary" };
+				node.children.unshift(label);
+				node.data = {
+					hName: "details",
+					hProperties: { className: ["answer-spoiler"] },
+				};
+				return;
+			}
 			if (
 				node.type === "containerDirective" ||
 				node.type === "leafDirective" ||
