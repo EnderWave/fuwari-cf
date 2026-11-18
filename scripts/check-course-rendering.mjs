@@ -61,10 +61,20 @@ const processor = await createMarkdownProcessor({
 });
 for (const file of await fs.readdir("src/content/posts")) {
 	if (!file.endsWith(".md")) continue;
+	if (
+		process.argv.includes("--new-series") &&
+		!/^(CS229|Generatingfunctionology)/.test(file)
+	)
+		continue;
 	const source = await fs
 		.readFile(`src/content/posts/${file}`, "utf8")
 		.then((s) => s.replace(/\r\n/g, "\n"));
-	if (!/^(离散数学-|CSAPP |工科概率|计算方法)/.test(file)) continue;
+	if (
+		!/^(离散数学-|CSAPP |工科概率|计算方法|CS229\(|Generatingfunctionology\()/.test(
+			file,
+		)
+	)
+		continue;
 	name = file;
 	count++;
 	parsedCode = [];

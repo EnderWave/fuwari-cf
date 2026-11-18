@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "补题-26成都.md",
+                "file": "高等代数 · 下册复习笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "补题-26成都"
+              "title": "高等代数 · 下册复习笔记"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:异常控制流",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -187,6 +187,24 @@
   },
   "active": "c3cc2031e4ac8e00",
   "lastOpenFiles": [
+    "CSAPP 第12章 并发编程、信号量同步与线程级并行全解.md",
+    "Generatingfunctionology(V).md",
+    "Generatingfunctionology(IV).md",
+    "Generatingfunctionology(III).md",
+    "Generatingfunctionology(II).md",
+    "Generatingfunctionology(I).md",
+    "题解-P14446 Zelda.md",
+    "CS229(VII).md",
+    "CS229(VI).md",
+    "CS229(V).md",
+    "CS229(IV).md",
+    "CS229(III).md",
+    "CS229(II).md",
+    "CS229(I).md",
+    "Draft Example.md",
+    "计算机系统导论 · 从信息表示到存储层次.md",
+    "计算机系统导论 · 重复版本存档.md",
+    "补题-26成都.md",
     "多项式 · 运算模板与 Euler 变换.md",
     "CSAPP 第7章 链接.md",
     "离散数学-命题.md",
@@ -195,24 +213,6 @@
     "计算方法与优化笔记（一）.md",
     "计算方法与优化课程习题 1.md",
     "离散数学-谓词.md",
-    "离散数学-群论.md",
-    "CSAPP 第8章 异常控制流.md",
-    "CSAPP 第9章 虚拟内存、地址翻译与动态内存分配.md",
-    "CSAPP 第10章 系统级 IO、RIO 健壮包与内核文件共享.md",
-    "CSAPP 第11章 网络编程、Sockets 接口与 Tiny Web 服务器全解.md",
-    "CSAPP 第12章 并发编程、信号量同步与线程级并行全解.md",
-    "计算机系统导论 · 重复版本存档.md",
-    "计算机系统导论 · 从信息表示到存储层次.md",
-    "计算方法与优化笔记（二）.md",
-    "计算方法与优化笔记（三）.md",
-    "工科概率论与数理统计学习笔记（三）.md",
-    "工科概率论与数理统计学习笔记（二）.md",
-    "离散数学-函数.md",
-    "离散数学-关系.md",
-    "离散数学-集合.md",
-    "离散数学-基数.md",
-    "课程笔记导航.md",
-    "高等代数 · 专题例题与证明.md",
     "新模板.pdf",
     "未命名.canvas",
     "ACM模板.pdf",
