@@ -161,7 +161,7 @@ $$
 
 $$
 
-\forall i \in \{1, \dots, n\}, \quad \beta_i := \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^n \beta_j K\left(x^{(i)}, x^{(j)}\right) \right) \iff \beta := \beta + \alpha \left(\ec{y} - K \beta\right) \tag{5.11}
+\forall i \in \{1, \dots, n\}, \quad \beta_i := \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^n \beta_j K\left(x^{(i)}, x^{(j)}\right) \right) \iff \beta := \beta + \alpha \left(\vec{y} - K \beta\right) \tag{5.11}
 
 $$
 
@@ -811,7 +811,7 @@ $$
 
 (a) 直接由一阶最优性条件 $\nabla_\theta J_\lambda(\theta) = 0$ 严格证明最优解满足表示定理（Representer Theorem）：$\theta^* = \sum_{i=1}^n \beta_i \phi(x^{(i)}) = \Phi^T \beta$；
 
-(b) 推导出对偶系数向量 $\beta \in \mathbb{R}^n$ 的闭式解 $\beta = (K + \lambda I_n)^{-1} \ec{y}$，并对比为什么原始空间求逆需要 $O(p^3)$ 而对偶核空间求逆只需 $O(n^3)$！
+(b) 推导出对偶系数向量 $\beta \in \mathbb{R}^n$ 的闭式解 $\beta = (K + \lambda I_n)^{-1} \vec{y}$，并对比为什么原始空间求逆需要 $O(p^3)$ 而对偶核空间求逆只需 $O(n^3)$！
 
 :::spoiler[习题 5.1 解答]
 
@@ -819,29 +819,29 @@ $$
 
 **(a) 表示定理证明**：
 
-将目标函数写成矩阵形式 $J_\lambda(\theta) = \frac{1}{2} \|\Phi \theta - \ec{y}\|_2^2 + \frac{\lambda}{2} \|\theta\|_2^2$。关于 $\theta$ 求梯度并令其等于 $0$：
+将目标函数写成矩阵形式 $J_\lambda(\theta) = \frac{1}{2} \|\Phi \theta - \vec{y}\|_2^2 + \frac{\lambda}{2} \|\theta\|_2^2$。关于 $\theta$ 求梯度并令其等于 $0$：
 
 $$
-\nabla_\theta J_\lambda(\theta) = \Phi^T (\Phi \theta - \ec{y}) + \lambda \theta = 0 \implies \theta = \Phi^T \underbrace{\left( \frac{1}{\lambda} (\ec{y} - \Phi \theta) \right)}_{\triangleq \beta \in \mathbb{R}^n}
+\nabla_\theta J_\lambda(\theta) = \Phi^T (\Phi \theta - \vec{y}) + \lambda \theta = 0 \implies \theta = \Phi^T \underbrace{\left( \frac{1}{\lambda} (\vec{y} - \Phi \theta) \right)}_{\triangleq \beta \in \mathbb{R}^n}
 $$
 
 因此，最优解 $\theta^*$ 必然严格满足 $\theta^* = \Phi^T \beta = \sum_{i=1}^n \beta_i \phi(x^{(i)})$！
 
 **(b) 对偶系数 $\beta$ 的闭式解推导**：
 
-将 $\theta = \Phi^T \beta$ 代入关系式 $\lambda \beta = \ec{y} - \Phi \theta$：
+将 $\theta = \Phi^T \beta$ 代入关系式 $\lambda \beta = \vec{y} - \Phi \theta$：
 
 $$
-\lambda \beta = \ec{y} - \Phi \Phi^T \beta = \ec{y} - K \beta \implies (K + \lambda I_n) \beta = \ec{y}
+\lambda \beta = \vec{y} - \Phi \Phi^T \beta = \vec{y} - K \beta \implies (K + \lambda I_n) \beta = \vec{y}
 $$
 
 因为核矩阵 $K \succeq 0$ 半正定且 $\lambda > 0$，所以 $K + \lambda I_n \succ 0$ 永远严格正定可逆！解得：
 
 $$
-\beta = (K + \lambda I_n)^{-1} \ec{y}
+\beta = (K + \lambda I_n)^{-1} \vec{y}
 $$
 
-**复杂度对比**：若直接在原始空间求 $\theta = (\Phi^T \Phi + \lambda I_p)^{-1} \Phi^T \ec{y}$，需要对 $p \times p$ 矩阵求逆（当高斯核 $p = \infty$ 时根本不可能）；而在对偶空间求 $(K + \lambda I_n)^{-1} \ec{y}$ 只需对 $n \times n$ 矩阵求逆，耗时仅为 $O(n^3)$！ $\blacksquare$
+**复杂度对比**：若直接在原始空间求 $\theta = (\Phi^T \Phi + \lambda I_p)^{-1} \Phi^T \vec{y}$，需要对 $p \times p$ 矩阵求逆（当高斯核 $p = \infty$ 时根本不可能）；而在对偶空间求 $(K + \lambda I_n)^{-1} \vec{y}$ 只需对 $n \times n$ 矩阵求逆，耗时仅为 $O(n^3)$！ $\blacksquare$
 
 :::
 

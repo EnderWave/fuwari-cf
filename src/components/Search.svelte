@@ -12,6 +12,7 @@ let result: SearchResult[] = [];
 let isSearching = false;
 let pagefindLoaded = false;
 let initialized = false;
+let searchError = "";
 
 const fakeResult: SearchResult[] = [
 	{
@@ -59,6 +60,7 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	}
 
 	isSearching = true;
+ searchError = "";
 
 	try {
 		let searchResults: SearchResult[] = [];
@@ -72,15 +74,17 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 			searchResults = fakeResult;
 		} else {
 			searchResults = [];
+            searchError = "搜索索引尚未加载，请稍后重试。";
 			console.error("Pagefind is not available in production environment.");
 		}
 
 		result = searchResults;
-		setPanelVisibility(result.length > 0, isDesktop);
+		setPanelVisibility(true, isDesktop);
 	} catch (error) {
 		console.error("Search error:", error);
 		result = [];
-		setPanelVisibility(false, isDesktop);
+		searchError = "搜索加载失败，请刷新重试。";
+        setPanelVisibility(true, isDesktop);
 	} finally {
 		isSearching = false;
 	}
@@ -173,6 +177,11 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
     </div>
 
     <!-- search results -->
+    {#if searchError}
+        <p role="status" class="px-3 py-2 text-sm text-50">{searchError}</p>
+    {:else if initialized && !isSearching && (keywordDesktop || keywordMobile) && result.length === 0}
+        <p role="status" class="px-3 py-2 text-sm text-50">没有找到匹配的文章。</p>
+    {/if}
     {#each result as item}
         <a href={item.url}
            class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block

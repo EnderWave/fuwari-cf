@@ -118,5 +118,20 @@
         overflow-x: auto;
         margin: 1em 0;
     }
+
+    /* Keep long equations and their labels in one scrollable row. */
+    .katex-display > .katex > .katex-html:has(> .tag) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        min-width: 100%;
+    }
+
+    .katex-display > .katex > .katex-html > .tag {
+        position: static;
+        flex: none;
+        margin-left: 2em;
+    }
     
 }

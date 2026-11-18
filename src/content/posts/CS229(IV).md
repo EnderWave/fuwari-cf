@@ -245,7 +245,7 @@ $$
 
 $$
 
-\hat{\arepsilon}(h) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}\left\{h(x^{(i)}) \neq y^{(i)}\right\}
+\hat{\varepsilon}(h) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}\left\{h(x^{(i)}) \neq y^{(i)}\right\}
 
 $$
 
@@ -253,7 +253,7 @@ $$
 
 $$
 
-\arepsilon(h) = P_{(x, y) \sim \mathcal{D}} \left(h(x) \neq y\right)
+\varepsilon(h) = P_{(x, y) \sim \mathcal{D}} \left(h(x) \neq y\right)
 
 $$
 
@@ -261,7 +261,7 @@ $$
 
 $$
 
-\hat{h} = \arg\min_{h \in \mathcal{H}} \hat{\arepsilon}(h)
+\hat{h} = \arg\min_{h \in \mathcal{H}} \hat{\varepsilon}(h)
 
 $$
 
@@ -269,7 +269,7 @@ $$
 
 $$
 
-h^* = \arg\min_{h \in \mathcal{H}} \arepsilon(h)
+h^* = \arg\min_{h \in \mathcal{H}} \varepsilon(h)
 
 $$
 
@@ -297,15 +297,15 @@ $$
 
 #### 8.3.1 有限假设类 ($|\mathcal{H}| = k$) 的一致收敛与样本复杂度证明
 
-假设 $\mathcal{H} = \{h_1, h_2, \dots, h_k\}$ 是一个包含 $k$ 个候选假设的有限集合。我们的目标是证明 $\arepsilon(\hat{h})$ 与 $\arepsilon(h^*)$ 非常接近。
+假设 $\mathcal{H} = \{h_1, h_2, \dots, h_k\}$ 是一个包含 $k$ 个候选假设的有限集合。我们的目标是证明 $\varepsilon(\hat{h})$ 与 $\varepsilon(h^*)$ 非常接近。
 
 **第一步：单个固定假设 $h_j \in \mathcal{H}$ 的集中界**。
 
-对于任意一个预先固定的 $h_j \in \mathcal{H}$，定义指示随机变量 $Z_i = \mathbf{1}\{h_j(x^{(i)}) \neq y^{(i)}\}$。由于训练样本 $(x^{(i)}, y^{(i)}) \stackrel{\text{i.i.d.}}{\sim} \mathcal{D}$，随机变量 $Z_1, \dots, Z_n$ 独立同分布且服从参数为 $\phi = \arepsilon(h_j)$ 的伯努利分布，其样本均值恰为训练误差 $\hat{\phi} = \hat{\arepsilon}(h_j)$！直接应用 Hoeffding 不等式可得：
+对于任意一个预先固定的 $h_j \in \mathcal{H}$，定义指示随机变量 $Z_i = \mathbf{1}\{h_j(x^{(i)}) \neq y^{(i)}\}$。由于训练样本 $(x^{(i)}, y^{(i)}) \stackrel{\text{i.i.d.}}{\sim} \mathcal{D}$，随机变量 $Z_1, \dots, Z_n$ 独立同分布且服从参数为 $\phi = \varepsilon(h_j)$ 的伯努利分布，其样本均值恰为训练误差 $\hat{\phi} = \hat{\varepsilon}(h_j)$！直接应用 Hoeffding 不等式可得：
 
 $$
 
-P\left( |\arepsilon(h_j) - \hat{\arepsilon}(h_j)| > \gamma \right) \le 2 \exp(-2 \gamma^2 n)
+P\left( |\varepsilon(h_j) - \hat{\varepsilon}(h_j)| > \gamma \right) \le 2 \exp(-2 \gamma^2 n)
 
 $$
 
@@ -313,17 +313,17 @@ $$
 
 初学者常犯的一个致命错误是：“既然 $\hat{h} \in \mathcal{H}$，那直接令 $h_j = \hat{h}$ 套用 Hoeffding 不等式不就完了吗？”
 
-**绝对不行！** 因为 Hoeffding 不等式要求假设 $h_j$ 必须在看到训练数据 $S$ **之前**就固定下来，这样 $Z_1, \dots, Z_n$ 才是独立同分布的伯努利变量。而 ERM 选出的 $\hat{h}$ 是依赖于整个训练集 $S$ 的随机假设，它在 $S$ 上被刻意挑选出来最小化训练误差，因此 $\hat{\arepsilon}(\hat{h})$ 是有偏的！为了控制随机选择的 $\hat{h}$，我们必须要求 $\mathcal{H}$ 中的**所有** $k$ 个假设同时满足训练误差接近泛化误差，这就是**一致收敛（Uniform Conergence）**。
+**绝对不行！** 因为 Hoeffding 不等式要求假设 $h_j$ 必须在看到训练数据 $S$ **之前**就固定下来，这样 $Z_1, \dots, Z_n$ 才是独立同分布的伯努利变量。而 ERM 选出的 $\hat{h}$ 是依赖于整个训练集 $S$ 的随机假设，它在 $S$ 上被刻意挑选出来最小化训练误差，因此 $\hat{\varepsilon}(\hat{h})$ 是有偏的！为了控制随机选择的 $\hat{h}$，我们必须要求 $\mathcal{H}$ 中的**所有** $k$ 个假设同时满足训练误差接近泛化误差，这就是**一致收敛（Uniform Conergence）**。
 
 :::
 
 **第二步：利用联合界建立一致收敛（Uniform Conergence）**。
 
-定义坏事件 $A_j$ 为“第 $j$ 个假设 $h_j$ 的训练误差与泛化误差之差超过 $\gamma$”，即 $A_j = \{ |\arepsilon(h_j) - \hat{\arepsilon}(h_j)| > \gamma \}$。已知 $P(A_j) \le 2 \exp(-2\gamma^2 n)$。由联合界可得，存在至少一个假设偏离超过 $\gamma$ 的概率满足：
+定义坏事件 $A_j$ 为“第 $j$ 个假设 $h_j$ 的训练误差与泛化误差之差超过 $\gamma$”，即 $A_j = \{ |\varepsilon(h_j) - \hat{\varepsilon}(h_j)| > \gamma \}$。已知 $P(A_j) \le 2 \exp(-2\gamma^2 n)$。由联合界可得，存在至少一个假设偏离超过 $\gamma$ 的概率满足：
 
 $$
 
-P\left( \exists h \in \mathcal{H}, \ |\arepsilon(h) - \hat{\arepsilon}(h)| > \gamma \right) = P(A_1 \cup A_2 \cup \dots \cup A_k) \le \sum_{j=1}^k P(A_j) \le 2k \exp(-2\gamma^2 n)
+P\left( \exists h \in \mathcal{H}, \ |\varepsilon(h) - \hat{\varepsilon}(h)| > \gamma \right) = P(A_1 \cup A_2 \cup \dots \cup A_k) \le \sum_{j=1}^k P(A_j) \le 2k \exp(-2\gamma^2 n)
 
 $$
 
@@ -331,7 +331,7 @@ $$
 
 $$
 
-P\left( \forall h \in \mathcal{H}, \ |\arepsilon(h) - \hat{\arepsilon}(h)| \le \gamma \right) \ge 1 - 2k \exp(-2\gamma^2 n)
+P\left( \forall h \in \mathcal{H}, \ |\varepsilon(h) - \hat{\varepsilon}(h)| \le \gamma \right) \ge 1 - 2k \exp(-2\gamma^2 n)
 
 $$
 
@@ -357,17 +357,17 @@ $$
 
 **第三步：利用三明治夹逼推导 ERM 超额风险界**。
 
-假设一致收敛事件 $\forall h \in \mathcal{H}, \ |\arepsilon(h) - \hat{\arepsilon}(h)| \le \gamma$ 已经发生（其发生概率至少为 $1 - \delta$）。因为 $\hat{h} \in \mathcal{H}$ 且 $h^* \in \mathcal{H}$，一致收敛保证它们同时满足 $|\arepsilon(\cdot) - \hat{\arepsilon}(\cdot)| \le \gamma$。我们按如下三步链式放大：
+假设一致收敛事件 $\forall h \in \mathcal{H}, \ |\varepsilon(h) - \hat{\varepsilon}(h)| \le \gamma$ 已经发生（其发生概率至少为 $1 - \delta$）。因为 $\hat{h} \in \mathcal{H}$ 且 $h^* \in \mathcal{H}$，一致收敛保证它们同时满足 $|\varepsilon(\cdot) - \hat{\varepsilon}(\cdot)| \le \gamma$。我们按如下三步链式放大：
 
 $$
 
 \begin{aligned}
 
-\arepsilon(\hat{h}) &\le \hat{\arepsilon}(\hat{h}) + \gamma \qquad &&\text{（对 }\hat{h}\text{ 应用一致收敛：}\arepsilon(\hat{h}) - \hat{\arepsilon}(\hat{h}) \le \gamma\text{）} \\
+\varepsilon(\hat{h}) &\le \hat{\varepsilon}(\hat{h}) + \gamma \qquad &&\text{（对 }\hat{h}\text{ 应用一致收敛：}\varepsilon(\hat{h}) - \hat{\varepsilon}(\hat{h}) \le \gamma\text{）} \\
 
-&\le \hat{\arepsilon}(h^*) + \gamma \qquad &&\text{（由 ERM 定义，}\hat{h}\text{ 最小化训练误差，故 }\hat{\arepsilon}(\hat{h}) \le \hat{\arepsilon}(h^*)\text{）} \\
+&\le \hat{\varepsilon}(h^*) + \gamma \qquad &&\text{（由 ERM 定义，}\hat{h}\text{ 最小化训练误差，故 }\hat{\varepsilon}(\hat{h}) \le \hat{\varepsilon}(h^*)\text{）} \\
 
-&\le \left(\arepsilon(h^*) + \gamma\right) + \gamma = \arepsilon(h^*) + 2\gamma \qquad &&\text{（对 }h^*\text{ 应用一致收敛：}\hat{\arepsilon}(h^*) - \arepsilon(h^*) \le \gamma\text{）}
+&\le \left(\varepsilon(h^*) + \gamma\right) + \gamma = \varepsilon(h^*) + 2\gamma \qquad &&\text{（对 }h^*\text{ 应用一致收敛：}\hat{\varepsilon}(h^*) - \varepsilon(h^*) \le \gamma\text{）}
 
 \end{aligned}
 
@@ -381,13 +381,13 @@ $$
 
 $$
 
-\arepsilon(\hat{h}) \le \left( \min_{h \in \mathcal{H}} \arepsilon(h) \right) + 2 \sqrt{\frac{1}{2n} \log \frac{2k}{\delta}}
+\varepsilon(\hat{h}) \le \left( \min_{h \in \mathcal{H}} \varepsilon(h) \right) + 2 \sqrt{\frac{1}{2n} \log \frac{2k}{\delta}}
 
 $$
 
-- **对偏差-方差权衡的理论解释**：如果我们将假设类 $\mathcal{H}$ 扩大为更大的假设类 $\mathcal{H}' \supset \mathcal{H}$，第一项 $\min_{h \in \mathcal{H}} \arepsilon(h)$（对应**近似误差/偏差 Bias**）不会变大甚至显著减小；但与此同时，假设类大小 $k = |\mathcal{H}|$ 增大，导致第二项 $2\sqrt{\frac{1}{2n}\log\frac{2k}{\delta}}$（对应**估计误差/方差 Variance**）随之增大！
+- **对偏差-方差权衡的理论解释**：如果我们将假设类 $\mathcal{H}$ 扩大为更大的假设类 $\mathcal{H}' \supset \mathcal{H}$，第一项 $\min_{h \in \mathcal{H}} \varepsilon(h)$（对应**近似误差/偏差 Bias**）不会变大甚至显著减小；但与此同时，假设类大小 $k = |\mathcal{H}|$ 增大，导致第二项 $2\sqrt{\frac{1}{2n}\log\frac{2k}{\delta}}$（对应**估计误差/方差 Variance**）随之增大！
 
-- **推论（样本复杂度 Sample Complexity）**：为了以至少 $1 - \delta$ 的概率保证 $\arepsilon(\hat{h}) \le \min_{h \in \mathcal{H}} \arepsilon(h) + 2\gamma$，所需的训练样本数只需满足：
+- **推论（样本复杂度 Sample Complexity）**：为了以至少 $1 - \delta$ 的概率保证 $\varepsilon(\hat{h}) \le \min_{h \in \mathcal{H}} \varepsilon(h) + 2\gamma$，所需的训练样本数只需满足：
 
 $$
 
@@ -451,7 +451,7 @@ $$
 
 $$
 
-|\arepsilon(h) - \hat{\arepsilon}(h)| \le O\left( \sqrt{\frac{D}{n} \log \frac{n}{D} + \frac{1}{n} \log \frac{1}{\delta}} \right)
+|\varepsilon(h) - \hat{\varepsilon}(h)| \le O\left( \sqrt{\frac{D}{n} \log \frac{n}{D} + \frac{1}{n} \log \frac{1}{\delta}} \right)
 
 $$
 
@@ -459,11 +459,11 @@ $$
 
 $$
 
-\arepsilon(\hat{h}) \le \arepsilon(h^*) + O\left( \sqrt{\frac{D}{n} \log \frac{n}{D} + \frac{1}{n} \log \frac{1}{\delta}} \right)
+\varepsilon(\hat{h}) \le \varepsilon(h^*) + O\left( \sqrt{\frac{D}{n} \log \frac{n}{D} + \frac{1}{n} \log \frac{1}{\delta}} \right)
 
 $$
 
-**推论（无限假设类的样本复杂度）**：为了以至少 $1 - \delta$ 的概率保证对所有 $h \in \mathcal{H}$ 有 $|\arepsilon(h) - \hat{\arepsilon}(h)| \le \gamma$（从而 $\arepsilon(\hat{h}) \le \arepsilon(h^*) + 2\gamma$），所需的训练样本量为：
+**推论（无限假设类的样本复杂度）**：为了以至少 $1 - \delta$ 的概率保证对所有 $h \in \mathcal{H}$ 有 $|\varepsilon(h) - \hat{\varepsilon}(h)| \le \gamma$（从而 $\varepsilon(\hat{h}) \le \varepsilon(h^*) + 2\gamma$），所需的训练样本量为：
 
 $$
 
@@ -551,7 +551,7 @@ $$
 
    - 将全部数据集 $S$ 随机划分为两部分：例如 $70\%$ 作为**训练集 $S_{\text{train}}$**，$30\%$ 作为**开发集/验证集 $S_{\text{c}}$（Hold-out Validation Set）**。
 
-   - 在 $S_{\text{train}}$ 上分别训练各个候选模型 $h_i$，然后评估它们在从未参与训练的 $S_{\text{c}}$ 上的验证误差 $\hat{\arepsilon}_{S_{\text{c}}}(h_i)$，选出验证误差最小的模型（最后可在全部 $S$ 上重训或直接输出）。
+   - 在 $S_{\text{train}}$ 上分别训练各个候选模型 $h_i$，然后评估它们在从未参与训练的 $S_{\text{c}}$ 上的验证误差 $\hat{\varepsilon}_{S_{\text{c}}}(h_i)$，选出验证误差最小的模型（最后可在全部 $S$ 上重训或直接输出）。
 
    - *缺点*：浪费了 $30\%$ 的宝贵数据没有用于模型训练。
 
@@ -559,9 +559,9 @@ $$
 
    - 当数据量适中或偏少时，将数据集 $S$ 随机均分为 $k$ 个不相交的子集（通常取 **$k = 10$**）：$S = S_1 \cup S_2 \cup \dots \cup S_k$。
 
-   - 对每个候选模型，进行 $k$ 轮训练与评估：第 $j$ 轮留出子集 $S_j$ 作为验证集，在其余 $k-1$ 个子集的并集 $S \setminus S_j$ 上训练模型，并计算在 $S_j$ 上的测试误差 $\hat{\arepsilon}_{S_j}(h_{i, j})$。
+   - 对每个候选模型，进行 $k$ 轮训练与评估：第 $j$ 轮留出子集 $S_j$ 作为验证集，在其余 $k-1$ 个子集的并集 $S \setminus S_j$ 上训练模型，并计算在 $S_j$ 上的测试误差 $\hat{\varepsilon}_{S_j}(h_{i, j})$。
 
-   - 计算 $k$ 轮验证误差的平均值 $\frac{1}{k} \sum_{j=1}^k \hat{\arepsilon}_{S_j}(h_{i, j})$，选出平均验证误差最小的模型，最后在**全部数据 $S$** 上用该超参数重新训练一次最终模型。
+   - 计算 $k$ 轮验证误差的平均值 $\frac{1}{k} \sum_{j=1}^k \hat{\varepsilon}_{S_j}(h_{i, j})$，选出平均验证误差最小的模型，最后在**全部数据 $S$** 上用该超参数重新训练一次最终模型。
 
 3. **留一交叉验证（Leae-One-Out Cross Validation, LOOCV）**：
 

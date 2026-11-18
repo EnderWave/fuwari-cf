@@ -153,11 +153,37 @@
 
 .custom-md spoiler {
   @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 
   &:not(:hover) {
-    color: var(--codeblock-bg);
-    * {
-        color: var(--codeblock-bg);
+    background: var(--codeblock-bg) !important;
+
+    /* Override typography, inline-code backgrounds and KaTeX inline styles.
+       Scope all overrides to the hidden state so hovering restores originals. */
+    &, *, &::before, &::after, *::before, *::after {
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+      -webkit-text-stroke-color: transparent !important;
+      text-decoration-color: transparent !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+      border-color: transparent !important;
+      outline-color: transparent !important;
+    }
+
+    *, &::before, &::after, *::before, *::after {
+      background: transparent !important;
+    }
+
+    /* KaTeX radicals/arrows can be SVGs rather than text. */
+    svg, img {
+      opacity: 0 !important;
+    }
+
+    &::selection, *::selection {
+      color: transparent !important;
+      background: var(--codeblock-bg) !important;
     }
   }
 }

@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
+import katex from "katex";
 import remarkMath from "remark-math";
 import remarkDirective from "remark-directive";
 import { parseDirectiveNode } from "../src/plugins/remark-directive-rehype.js";
@@ -29,7 +30,22 @@ function audit() {
 				parsedCode.push(node.value);
 				if (!node.value.trim()) issues.push(`${name}: empty code block`);
 			}
-			if (node.type === "math" || node.type === "inlineMath") formulas++;
+			if (node.type === "math" || node.type === "inlineMath") {
+				formulas++;
+				if (name.startsWith("CS229")) {
+					try {
+						katex.renderToString(node.value, {
+							displayMode: node.type === "math",
+							throwOnError: true,
+							strict: "ignore",
+						});
+					} catch (error) {
+						issues.push(
+							`${name}:${node.position?.start.line}: ${error.message}`,
+						);
+					}
+				}
+			}
 			if (
 				node.type === "text" &&
 				/\$\$|:{3}(?:note|important|caution|tip|warning)?|:spoiler|^\s*\|.*\|\s*$/m.test(
